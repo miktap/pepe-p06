@@ -417,6 +417,7 @@
 				C3343AF11EABB340009AED76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3343AF21EABB340009AED76 /* Build configuration list for PBXNativeTarget "PePeP06Tests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +426,7 @@
 				C3343AF41EABB340009AED76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
