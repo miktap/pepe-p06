@@ -68,7 +68,7 @@ class WebClient {
                 }
             }
             
-            //log.debug("Invoking web request")
+            log.debug("Invoking web request")
             sessionTask.resume()
         }
     }
