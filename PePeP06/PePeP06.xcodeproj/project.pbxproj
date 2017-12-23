@@ -16,6 +16,7 @@
 		C3343ADD1EABB340009AED76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADC1EABB340009AED76 /* Assets.xcassets */; };
 		C3343AE01EABB340009AED76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADE1EABB340009AED76 /* LaunchScreen.storyboard */; };
 		C3343AEB1EABB340009AED76 /* PePeP06Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AEA1EABB340009AED76 /* PePeP06Tests.swift */; };
+		C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		C3343AE61EABB340009AED76 /* PePeP06Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PePeP06Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3343AEA1EABB340009AED76 /* PePeP06Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PePeP06Tests.swift; sourceTree = "<group>"; };
 		C3343AEC1EABB340009AED76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		C3343AD21EABB340009AED76 /* PePeP06 */ = {
 			isa = PBXGroup;
 			children = (
+				C3D96BF01FEEB228009CFBC8 /* Taso */,
 				C3343AD31EABB340009AED76 /* AppDelegate.swift */,
 				C3343AD51EABB340009AED76 /* FirstViewController.swift */,
 				C3343AD71EABB340009AED76 /* SecondViewController.swift */,
@@ -120,6 +123,14 @@
 				C3343AEC1EABB340009AED76 /* Info.plist */,
 			);
 			path = PePeP06Tests;
+			sourceTree = "<group>";
+		};
+		C3D96BF01FEEB228009CFBC8 /* Taso */ = {
+			isa = PBXGroup;
+			children = (
+				C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */,
+			);
+			path = Taso;
 			sourceTree = "<group>";
 		};
 		F79D2D5EC26777BA48F5B69D /* Frameworks */ = {
@@ -352,6 +363,7 @@
 			files = (
 				C3343AD81EABB340009AED76 /* SecondViewController.swift in Sources */,
 				C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */,
+				C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */,
 				C3343AD61EABB340009AED76 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
