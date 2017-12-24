@@ -16,6 +16,8 @@ class PlayerTableViewCell: UITableViewCell {
 class TeamViewController: UIViewController, UITableViewDataSource {
     // MARK: - Properties
     
+    /// PePe team ID in Taso
+    let pepeTeamID = 141460
     var players = [Player]() {
         didSet {
             if let tableView = tableView {
@@ -57,7 +59,7 @@ class TeamViewController: UIViewController, UITableViewDataSource {
     
     func populatePlayers() {
         let tasoClient = TasoClient()
-        tasoClient.getTeam(id: 141460)?
+        tasoClient.getTeam(id: pepeTeamID)?
             .then { response -> Void in
                 log.debug("Status code: \(response.statusCode)")
                 if let data = response.data, let message = String(data: data, encoding: .utf8) {
