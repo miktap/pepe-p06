@@ -18,6 +18,7 @@
 		C3343AEB1EABB340009AED76 /* PePeP06Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AEA1EABB340009AED76 /* PePeP06Tests.swift */; };
 		C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */; };
 		C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */; };
+		C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2D1FEFA1D300A913C1 /* Player.swift */; };
 		C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		C3343AEC1EABB340009AED76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClient.swift; sourceTree = "<group>"; };
+		C3714E2D1FEFA1D300A913C1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,9 +148,18 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		C3714E2C1FEFA1C500A913C1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C3714E2D1FEFA1D300A913C1 /* Player.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C3D96BF01FEEB228009CFBC8 /* Taso */ = {
 			isa = PBXGroup;
 			children = (
+				C3714E2C1FEFA1C500A913C1 /* Models */,
 				C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */,
 				C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */,
 			);
@@ -389,6 +400,7 @@
 				C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */,
 				C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */,
 				C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */,
+				C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */,
 				C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */,
 				C3343AD61EABB340009AED76 /* FirstViewController.swift in Sources */,
 			);
