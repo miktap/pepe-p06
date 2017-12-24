@@ -10,7 +10,7 @@
 		3C3FC3ED7E49AC56FFC8FAA2 /* Pods_PePeP06Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BE181749DF8FFCE3534456 /* Pods_PePeP06Tests.framework */; };
 		9466E2092AE7B5F4F2FF86F5 /* Pods_PePeP06.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66971CDC79E6FED50FBD2976 /* Pods_PePeP06.framework */; };
 		C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD31EABB340009AED76 /* AppDelegate.swift */; };
-		C3343AD61EABB340009AED76 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD51EABB340009AED76 /* FirstViewController.swift */; };
+		C3343AD61EABB340009AED76 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD51EABB340009AED76 /* TeamViewController.swift */; };
 		C3343AD81EABB340009AED76 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD71EABB340009AED76 /* SecondViewController.swift */; };
 		C3343ADB1EABB340009AED76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343AD91EABB340009AED76 /* Main.storyboard */; };
 		C3343ADD1EABB340009AED76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADC1EABB340009AED76 /* Assets.xcassets */; };
@@ -43,7 +43,7 @@
 		B9EE9C72E41601BE79FE955E /* Pods-PePeP06.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PePeP06.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PePeP06/Pods-PePeP06.debug.xcconfig"; sourceTree = "<group>"; };
 		C3343AD01EABB340009AED76 /* PePeP06.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PePeP06.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3343AD31EABB340009AED76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C3343AD51EABB340009AED76 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		C3343AD51EABB340009AED76 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		C3343AD71EABB340009AED76 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C3343ADA1EABB340009AED76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3343ADC1EABB340009AED76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 				C3D96BF01FEEB228009CFBC8 /* Taso */,
 				C3714E221FEECD6900A913C1 /* Utilities */,
 				C3343AD31EABB340009AED76 /* AppDelegate.swift */,
-				C3343AD51EABB340009AED76 /* FirstViewController.swift */,
+				C3343AD51EABB340009AED76 /* TeamViewController.swift */,
 				C3343AD71EABB340009AED76 /* SecondViewController.swift */,
 				C3343AD91EABB340009AED76 /* Main.storyboard */,
 				C3343ADC1EABB340009AED76 /* Assets.xcassets */,
@@ -414,7 +414,7 @@
 				C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */,
 				C3714E351FF00DAE00A913C1 /* TeamListing.swift in Sources */,
 				C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */,
-				C3343AD61EABB340009AED76 /* FirstViewController.swift in Sources */,
+				C3343AD61EABB340009AED76 /* TeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
