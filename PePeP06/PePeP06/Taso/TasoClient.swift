@@ -48,7 +48,7 @@ struct TasoQuery {
  *
  */
 class TasoClient: WebClient, TasoClientProtocol {
-    let tasoUrl = "https://torneopal.fi/taso/rest/"
+    let tasoUrl = "https://spl.torneopal.fi/taso/rest/"
     
     func getTeam(id: Int) -> Promise<WebResponse>? {
         let query = TasoQuery(queries: ["team_id": String(id)])
