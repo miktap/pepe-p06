@@ -28,8 +28,8 @@ class FirstViewController: UIViewController {
                 log.debug("Status code: \(response.statusCode)")
                 if let data = response.data, let message = String(data: data, encoding: .utf8) {
                     log.debug("Message: \(message)")
-                    if let team = Team(JSONString: message) {
-                        log.debug("Got team: \(team.team_name ?? "")")
+                    if let teamListing = TeamListing(JSONString: message) {
+                        log.debug("Got team: \(teamListing.team.team_name ?? "")")
                     } else {
                         log.warning("Unable to parse team")
                     }

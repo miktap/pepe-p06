@@ -15,11 +15,12 @@
 		C3343ADB1EABB340009AED76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343AD91EABB340009AED76 /* Main.storyboard */; };
 		C3343ADD1EABB340009AED76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADC1EABB340009AED76 /* Assets.xcassets */; };
 		C3343AE01EABB340009AED76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADE1EABB340009AED76 /* LaunchScreen.storyboard */; };
-		C3343AEB1EABB340009AED76 /* PePeP06Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AEA1EABB340009AED76 /* PePeP06Tests.swift */; };
 		C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */; };
 		C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */; };
 		C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2D1FEFA1D300A913C1 /* Player.swift */; };
 		C3714E301FEFA3B200A913C1 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2F1FEFA3B200A913C1 /* Team.swift */; };
+		C3714E331FEFA6C900A913C1 /* TeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E321FEFA6C900A913C1 /* TeamTests.swift */; };
+		C3714E351FF00DAE00A913C1 /* TeamListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E341FF00DAE00A913C1 /* TeamListing.swift */; };
 		C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,12 +50,14 @@
 		C3343ADF1EABB340009AED76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3343AE11EABB340009AED76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3343AE61EABB340009AED76 /* PePeP06Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PePeP06Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3343AEA1EABB340009AED76 /* PePeP06Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PePeP06Tests.swift; sourceTree = "<group>"; };
 		C3343AEC1EABB340009AED76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClient.swift; sourceTree = "<group>"; };
 		C3714E2D1FEFA1D300A913C1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C3714E2F1FEFA3B200A913C1 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		C3714E311FEFA6C900A913C1 /* PePeP06Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PePeP06Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		C3714E321FEFA6C900A913C1 /* TeamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTests.swift; sourceTree = "<group>"; };
+		C3714E341FF00DAE00A913C1 /* TeamListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListing.swift; sourceTree = "<group>"; };
 		C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,8 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				C3714E271FEEE69800A913C1 /* Mocks */,
-				C3343AEA1EABB340009AED76 /* PePeP06Tests.swift */,
 				C3343AEC1EABB340009AED76 /* Info.plist */,
+				C3714E321FEFA6C900A913C1 /* TeamTests.swift */,
+				C3714E311FEFA6C900A913C1 /* PePeP06Tests-Bridging-Header.h */,
 			);
 			path = PePeP06Tests;
 			sourceTree = "<group>";
@@ -155,6 +159,7 @@
 			children = (
 				C3714E2D1FEFA1D300A913C1 /* Player.swift */,
 				C3714E2F1FEFA3B200A913C1 /* Team.swift */,
+				C3714E341FF00DAE00A913C1 /* TeamListing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */,
 				C3714E301FEFA3B200A913C1 /* Team.swift in Sources */,
 				C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */,
+				C3714E351FF00DAE00A913C1 /* TeamListing.swift in Sources */,
 				C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */,
 				C3343AD61EABB340009AED76 /* FirstViewController.swift in Sources */,
 			);
@@ -416,7 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3343AEB1EABB340009AED76 /* PePeP06Tests.swift in Sources */,
+				C3714E331FEFA6C900A913C1 /* TeamTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,11 +599,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = A4324HYWV6;
 				INFOPLIST_FILE = PePeP06Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pepe.PePeP06Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PePeP06Tests/PePeP06Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PePeP06.app/PePeP06";
@@ -610,11 +619,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = A4324HYWV6;
 				INFOPLIST_FILE = PePeP06Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pepe.PePeP06Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PePeP06Tests/PePeP06Tests-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PePeP06.app/PePeP06";
