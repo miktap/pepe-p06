@@ -32,6 +32,7 @@ class TeamViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = ""
         tableView.dataSource = self
         populatePlayers()
     }
@@ -63,6 +64,7 @@ class TeamViewController: UIViewController, UITableViewDataSource {
                     log.debug("Message: \(message)")
                     if let teamListing = TeamListing(JSONString: message) {
                         log.debug("Got team: \(teamListing.team.team_name ?? "")")
+                        self.navigationItem.title = teamListing.team.team_name
                         if let teamPlayers = teamListing.team.players {
                             self.players = teamPlayers
                         } else {
