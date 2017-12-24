@@ -6,3 +6,29 @@
 //
 
 import Foundation
+import ObjectMapper
+
+struct Player: Mappable {
+    // MARK: - Properties
+    
+    var player_id: String?
+    var first_name: String?
+    var last_name: String?
+    var shirt_number: String?
+    
+    
+    // MARK: - Mappable
+    
+    init?(map: Map) {
+        if map.JSON["player_id"] == nil {
+            return nil
+        }
+    }
+    
+    mutating func mapping(map: Map) {
+        player_id       <- map["player_id"]
+        first_name      <- map["first_name"]
+        last_name       <- map["last_name"]
+        shirt_number    <- map["shirt_number"]
+    }
+}
