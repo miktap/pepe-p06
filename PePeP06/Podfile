@@ -5,6 +5,7 @@ target 'PePeP06' do
   use_frameworks!
   pod 'PromiseKit'
   pod 'SwiftyBeaver'
+  pod 'ObjectMapper'
 
   target 'PePeP06Tests' do
     inherit! :search_paths
