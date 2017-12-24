@@ -19,7 +19,6 @@
 		C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */; };
 		C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2D1FEFA1D300A913C1 /* Player.swift */; };
 		C3714E301FEFA3B200A913C1 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2F1FEFA3B200A913C1 /* Team.swift */; };
-		C3714E331FEFA6C900A913C1 /* TeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E321FEFA6C900A913C1 /* TeamTests.swift */; };
 		C3714E351FF00DAE00A913C1 /* TeamListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E341FF00DAE00A913C1 /* TeamListing.swift */; };
 		C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */; };
 /* End PBXBuildFile section */
@@ -56,7 +55,6 @@
 		C3714E2D1FEFA1D300A913C1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C3714E2F1FEFA3B200A913C1 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		C3714E311FEFA6C900A913C1 /* PePeP06Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PePeP06Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		C3714E321FEFA6C900A913C1 /* TeamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTests.swift; sourceTree = "<group>"; };
 		C3714E341FF00DAE00A913C1 /* TeamListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListing.swift; sourceTree = "<group>"; };
 		C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,7 +131,6 @@
 			children = (
 				C3714E271FEEE69800A913C1 /* Mocks */,
 				C3343AEC1EABB340009AED76 /* Info.plist */,
-				C3714E321FEFA6C900A913C1 /* TeamTests.swift */,
 				C3714E311FEFA6C900A913C1 /* PePeP06Tests-Bridging-Header.h */,
 			);
 			path = PePeP06Tests;
@@ -422,7 +419,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3714E331FEFA6C900A913C1 /* TeamTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
