@@ -23,6 +23,8 @@
 		C37B53ED1FF0319D00B3B995 /* WebClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B53EC1FF0319D00B3B995 /* WebClientTests.swift */; };
 		C37B53EF1FF037E700B3B995 /* TasoClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B53EE1FF037E700B3B995 /* TasoClientTests.swift */; };
 		C37B53F71FF0F49400B3B995 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B53F61FF0F49400B3B995 /* PlayerViewController.swift */; };
+		C3BDC41A1FF127AB0031512F /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BDC4191FF127AB0031512F /* Competition.swift */; };
+		C3BDC41C1FF127CA0031512F /* CompetitionListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BDC41B1FF127CA0031512F /* CompetitionListing.swift */; };
 		C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		C37B53EC1FF0319D00B3B995 /* WebClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClientTests.swift; sourceTree = "<group>"; };
 		C37B53EE1FF037E700B3B995 /* TasoClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClientTests.swift; sourceTree = "<group>"; };
 		C37B53F61FF0F49400B3B995 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		C3BDC4191FF127AB0031512F /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
+		C3BDC41B1FF127CA0031512F /* CompetitionListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionListing.swift; sourceTree = "<group>"; };
 		C3D96BF11FEEB23E009CFBC8 /* WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +165,8 @@
 		C3714E2C1FEFA1C500A913C1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C3BDC4191FF127AB0031512F /* Competition.swift */,
+				C3BDC41B1FF127CA0031512F /* CompetitionListing.swift */,
 				C3714E2D1FEFA1D300A913C1 /* Player.swift */,
 				C3714E2F1FEFA3B200A913C1 /* Team.swift */,
 				C3714E341FF00DAE00A913C1 /* TeamListing.swift */,
@@ -421,9 +427,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3BDC41A1FF127AB0031512F /* Competition.swift in Sources */,
 				C3343AD81EABB340009AED76 /* SecondViewController.swift in Sources */,
 				C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */,
 				C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */,
+				C3BDC41C1FF127CA0031512F /* CompetitionListing.swift in Sources */,
 				C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */,
 				C3714E301FEFA3B200A913C1 /* Team.swift in Sources */,
 				C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */,

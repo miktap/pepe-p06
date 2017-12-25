@@ -59,7 +59,7 @@ class TeamViewController: UIViewController, UITableViewDataSource {
     
     func populatePlayers() {
         let tasoClient = TasoClient()
-        tasoClient.getTeam(id: pepeTeamID)?
+        tasoClient.getTeam(team_id: pepeTeamID)?
             .then { response -> Void in
                 log.debug("Status code: \(response.statusCode)")
                 if let data = response.data, let message = String(data: data, encoding: .utf8) {
