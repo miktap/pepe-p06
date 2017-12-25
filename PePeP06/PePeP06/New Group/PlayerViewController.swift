@@ -8,27 +8,28 @@
 import UIKit
 
 class PlayerViewController: UIViewController {
+    // MARK: - Properties
+    
+    var player: Player?
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var gamesLabel: UILabel!
+    @IBOutlet weak var goalsLabel: UILabel!
+    @IBOutlet weak var passesLabel: UILabel!
+    @IBOutlet weak var yellowsLabel: UILabel!
+    @IBOutlet weak var redsLabel: UILabel!
+    
+    
+    // MARK: - UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let player = player {
+            navigationItem.title = player.first_name
+            
+            nameLabel.text = playerFullName(player: player)
+            
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

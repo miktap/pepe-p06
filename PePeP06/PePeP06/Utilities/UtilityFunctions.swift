@@ -38,3 +38,26 @@ func optionalArraysAreEqual<T: Equatable>(lhs: [T?]?, rhs: [T?]?) -> Bool {
         return lhs == nil && rhs == nil
     }
 }
+
+/**
+ * Player full name.
+ *
+ * - Parameter player: Current player
+ * - Returns: Players fullname
+ */
+func playerFullName(player: Player) -> String {
+    var result = ""
+    if let firstName = player.first_name {
+        result = firstName
+    }
+    
+    if let lastName = player.last_name {
+        if result.isEmpty {
+            result = lastName
+        } else {
+            result += " " + lastName
+        }
+    }
+    
+    return result
+}

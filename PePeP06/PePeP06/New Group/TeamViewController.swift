@@ -49,7 +49,7 @@ class TeamViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath) as! PlayerTableViewCell
         cell.playerNumber.text = players[indexPath.row].shirt_number
-        cell.playerName.text = displayName(player: players[indexPath.row])
+        cell.playerName.text = playerFullName(player: players[indexPath.row])
         
         return cell
     }
@@ -82,23 +82,15 @@ class TeamViewController: UIViewController, UITableViewDataSource {
     }
     
     
-    // MARK: - Private methods
+    // MARK: - Navigation
     
-    private func displayName(player: Player) -> String {
-        var result = ""
-        if let firstName = player.first_name {
-            result = firstName
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? PlayerViewController,
+            let cellIndex = tableView.indexPathForSelectedRow {
+            vc.player = players[cellIndex.row]
         }
-        
-        if let lastName = player.last_name {
-            if result.isEmpty {
-                result = lastName
-            } else {
-                result += " " + lastName
-            }
-        }
-        
-        return result
     }
 }
 

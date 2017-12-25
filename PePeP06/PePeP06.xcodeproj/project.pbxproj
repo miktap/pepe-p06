@@ -121,7 +121,7 @@
 			children = (
 				C3D96BF01FEEB228009CFBC8 /* Taso */,
 				C3714E221FEECD6900A913C1 /* Utilities */,
-				C37B53F51FF0F45800B3B995 /* Views */,
+				C37B53F51FF0F45800B3B995 /* ViewControllers */,
 				C3343AD31EABB340009AED76 /* AppDelegate.swift */,
 				C3343AD91EABB340009AED76 /* Main.storyboard */,
 				C3343ADC1EABB340009AED76 /* Assets.xcassets */,
@@ -168,14 +168,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		C37B53F51FF0F45800B3B995 /* Views */ = {
+		C37B53F51FF0F45800B3B995 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C37B53F61FF0F49400B3B995 /* PlayerViewController.swift */,
 				C3343AD71EABB340009AED76 /* SecondViewController.swift */,
 				C3343AD51EABB340009AED76 /* TeamViewController.swift */,
 			);
-			name = Views;
+			name = ViewControllers;
 			path = "New Group";
 			sourceTree = "<group>";
 		};
