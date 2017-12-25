@@ -28,8 +28,12 @@ class PlayerViewController: UIViewController {
         if let player = player {
             navigationItem.title = player.first_name
             
-            nameLabel.text = playerFullName(player: player)
-            
+            nameLabel.text      = playerFullName(player: player)
+            gamesLabel.text     = player.matches
+            goalsLabel.text     = player.goals
+            passesLabel.text    = player.assists
+            yellowsLabel.text   = player.warnings
+            redsLabel.text      = player.suspensions
         }
     }
 }

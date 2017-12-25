@@ -15,6 +15,11 @@ struct Player: Mappable {
     var first_name: String?
     var last_name: String?
     var shirt_number: String?
+    var matches: String?
+    var goals: String?
+    var assists: String?
+    var warnings: String?
+    var suspensions: String?
     
     
     // MARK: - Mappable
@@ -30,5 +35,10 @@ struct Player: Mappable {
         first_name      <- map["first_name"]
         last_name       <- map["last_name"]
         shirt_number    <- map["shirt_number"]
+        matches         <- map["matches"]
+        goals           <- map["goals"]
+        assists         <- map["assists"]
+        warnings        <- map["warnings"]
+        suspensions     <- map["suspensions"]
     }
 }
