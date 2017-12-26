@@ -30,7 +30,7 @@ class TasoClientTests: QuickSpec {
                             teamListing = TeamListing(JSONString: message!)
                     }
                     
-                    expect(teamListing?.team.team_name).toEventually(equal("PePe"))
+                    expect(teamListing?.team.team_name).toEventually(equal("PePe"), timeout: 3)
                 }
             }
             
@@ -49,16 +49,16 @@ class TasoClientTests: QuickSpec {
             }
             
             describe("getCategories") {
-                it("gets") {
-                    var result = false
+                it("gets category FP12") {
+                    var categoryListing: CategoryListing?
                     tasoClient.getCategories(competition_id: "lsfs1718")!
                         .then { response -> Void in
                             let message = String(data: response.data!, encoding: .utf8)
                             log.debug(message!)
-                            result = true
+                            categoryListing = CategoryListing(JSONString: message!)
                     }
                     
-                    expect(result).toEventually(beTrue(), timeout: 3)
+                    expect(categoryListing?.categories).toEventually(containElementSatisfying({$0.category_id == "FP12"}), timeout: 3)
                 }
             }
             
