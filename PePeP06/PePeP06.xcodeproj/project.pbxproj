@@ -15,6 +15,9 @@
 		C3343ADB1EABB340009AED76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343AD91EABB340009AED76 /* Main.storyboard */; };
 		C3343ADD1EABB340009AED76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADC1EABB340009AED76 /* Assets.xcassets */; };
 		C3343AE01EABB340009AED76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADE1EABB340009AED76 /* LaunchScreen.storyboard */; };
+		C353B5DC1FF2447500526AD3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5DB1FF2447500526AD3 /* Category.swift */; };
+		C353B5DE1FF2463D00526AD3 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5DD1FF2463D00526AD3 /* Club.swift */; };
+		C353B5E01FF2498600526AD3 /* ClubListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5DF1FF2498600526AD3 /* ClubListing.swift */; };
 		C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */; };
 		C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */; };
 		C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2D1FEFA1D300A913C1 /* Player.swift */; };
@@ -55,6 +58,9 @@
 		C3343AE11EABB340009AED76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3343AE61EABB340009AED76 /* PePeP06Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PePeP06Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3343AEC1EABB340009AED76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C353B5DB1FF2447500526AD3 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C353B5DD1FF2463D00526AD3 /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
+		C353B5DF1FF2498600526AD3 /* ClubListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubListing.swift; sourceTree = "<group>"; };
 		C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClient.swift; sourceTree = "<group>"; };
 		C3714E2D1FEFA1D300A913C1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -165,11 +171,14 @@
 		C3714E2C1FEFA1C500A913C1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C353B5DB1FF2447500526AD3 /* Category.swift */,
+				C353B5DD1FF2463D00526AD3 /* Club.swift */,
 				C3BDC4191FF127AB0031512F /* Competition.swift */,
 				C3BDC41B1FF127CA0031512F /* CompetitionListing.swift */,
 				C3714E2D1FEFA1D300A913C1 /* Player.swift */,
 				C3714E2F1FEFA3B200A913C1 /* Team.swift */,
 				C3714E341FF00DAE00A913C1 /* TeamListing.swift */,
+				C353B5DF1FF2498600526AD3 /* ClubListing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -430,12 +439,15 @@
 				C3BDC41A1FF127AB0031512F /* Competition.swift in Sources */,
 				C3343AD81EABB340009AED76 /* SecondViewController.swift in Sources */,
 				C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */,
+				C353B5DE1FF2463D00526AD3 /* Club.swift in Sources */,
 				C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */,
+				C353B5E01FF2498600526AD3 /* ClubListing.swift in Sources */,
 				C3BDC41C1FF127CA0031512F /* CompetitionListing.swift in Sources */,
 				C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */,
 				C3714E301FEFA3B200A913C1 /* Team.swift in Sources */,
 				C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */,
 				C3714E351FF00DAE00A913C1 /* TeamListing.swift in Sources */,
+				C353B5DC1FF2447500526AD3 /* Category.swift in Sources */,
 				C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */,
 				C3343AD61EABB340009AED76 /* TeamViewController.swift in Sources */,
 				C37B53F71FF0F49400B3B995 /* PlayerViewController.swift in Sources */,

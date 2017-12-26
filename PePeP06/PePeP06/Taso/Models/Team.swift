@@ -14,6 +14,7 @@ struct Team: Mappable {
     var team_id: String?
     var team_name: String?
     var players: [Player]?
+    var categories: [Category]?
     
     
     // MARK: - Mappable
@@ -28,5 +29,6 @@ struct Team: Mappable {
         team_id     <- map["team_id"]
         team_name   <- map["team_name"]
         players     <- map["players"]
+        categories  <- map["categories"]
     }
 }

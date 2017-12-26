@@ -26,6 +26,7 @@ protocol TasoClientProtocol {
      * - Parameter season_id (Optional): Only list selected season (example 2018)
      * - Parameter organizer (Optional): Only list selected organiser (example spl)
      * - Parameter region (Optional): Only list selected region (example spl)
+     * - Returns: A promise of a `WebResponse`
      */
     func getCompetitions(current: String?, season_id: String?, organizer: String?, region: String?) -> Promise<WebResponse>?
     
@@ -37,8 +38,18 @@ protocol TasoClientProtocol {
      * - Parameter category_id: Category id
      * - Parameter organiser: Organiser id
      * - Parameter all_current: List all current (1), not archived (0) categories
+     * - Returns: A promise of a `WebResponse`
      */
     func getCategories(competition_id: String?, category_id: String?, organiser: String?, all_current: String?) -> Promise<WebResponse>?
+    
+    /**
+     * Get a club.
+     *
+     * - Parameter club_id: Club ID. This parameter is not used with Club API Keys. Call will always return your own
+     * club when called with Club API Key
+     * - Returns: A promise of a `WebResponse`
+     */
+    func getClub(club_id: String?) -> Promise<WebResponse>?
 }
 
 /**
@@ -109,6 +120,12 @@ class TasoClient: WebClient, TasoClientProtocol {
         ]
         
         let request = WebRequest(url: tasoUrl + "getCategories", method: "GET", queryParams: query.output, headers: nil, body: nil)
+        return invoke(webRequest: request)
+    }
+    
+    func getClub(club_id: String? = nil) -> Promise<WebResponse>? {
+        let query = TasoQuery(queries: [URLQueryItem(name: "club_id", value: club_id)])
+        let request = WebRequest(url: tasoUrl + "getClub", method: "GET", queryParams: query.output, headers: nil, body: nil)
         return invoke(webRequest: request)
     }
 }
