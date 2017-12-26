@@ -17,7 +17,7 @@ class TeamViewController: UIViewController, UITableViewDataSource {
     // MARK: - Properties
     
     /// PePe team ID in Taso
-    let pepeTeamID = 141460
+    let pepeTeamID = "141460"
     var players = [Player]() {
         didSet {
             if let tableView = tableView {

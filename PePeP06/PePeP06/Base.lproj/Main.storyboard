@@ -251,7 +251,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Pelit" image="trophy" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Pelit" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -296,7 +296,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="trophy" width="25" height="25"/>
         <image name="user_male" width="30" height="30"/>
     </resources>
 </document>

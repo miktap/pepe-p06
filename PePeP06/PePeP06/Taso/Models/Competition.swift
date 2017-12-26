@@ -33,8 +33,8 @@ struct Competition: Mappable {
         competition_name    <- map["competition_name"]
         competition_status  <- map["competition_status"]
         season_id           <- map["season_id"]
-        organiser           <- map["organizer"]
-        organiser_name      <- map["organizer_name"]
+        organiser           <- map["organiser"]
+        organiser_name      <- map["organiser_name"]
         sport_id            <- map["sport_id"]
     }
 }

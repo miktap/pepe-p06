@@ -23,7 +23,7 @@ class TasoClientTests: QuickSpec {
             describe("getTeam") {
                 it("gets PePe team") {
                     var teamListing: TeamListing?
-                    tasoClient.getTeam(team_id: 141460)!
+                    tasoClient.getTeam(team_id: "141460")!
                         .then { response -> Void in
                             let message = String(data: response.data!, encoding: .utf8)
                             log.debug(message!)
@@ -36,7 +36,7 @@ class TasoClientTests: QuickSpec {
             
             describe("getCompetitions") {
                 it("gets lsfs1718 competition") {
-                    var competitionListing: CompetitionListing!
+                    var competitionListing: CompetitionListing?
                     tasoClient.getCompetitions()!
                         .then { response -> Void in
                             let message = String(data: response.data!, encoding: .utf8)
@@ -44,7 +44,21 @@ class TasoClientTests: QuickSpec {
                             competitionListing = CompetitionListing(JSONString: message!)
                     }
                     
-                    expect(competitionListing.competitions!).toEventually(containElementSatisfying({$0.competition_id == "lsfs1718"}))
+                    expect(competitionListing?.competitions!).toEventually(containElementSatisfying({$0.competition_id == "lsfs1718"}), timeout: 3)
+                }
+            }
+            
+            describe("getCategories") {
+                it("gets") {
+                    var result = false
+                    tasoClient.getCategories(competition_id: "lsfs1718")!
+                        .then { response -> Void in
+                            let message = String(data: response.data!, encoding: .utf8)
+                            log.debug(message!)
+                            result = true
+                    }
+                    
+                    expect(result).toEventually(beTrue())
                 }
             }
         }
