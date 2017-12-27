@@ -13,7 +13,7 @@ class PlayerTableViewCell: UITableViewCell {
     @IBOutlet weak var playerName: UILabel!
 }
 
-class TeamViewController: UIViewController, UITableViewDataSource {
+class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Properties
     
     var players = [Player]() {
@@ -34,6 +34,7 @@ class TeamViewController: UIViewController, UITableViewDataSource {
         
         navigationItem.title = ""
         tableView.dataSource = self
+        tableView.delegate = self
         populatePlayers()
     }
 
@@ -50,6 +51,13 @@ class TeamViewController: UIViewController, UITableViewDataSource {
         cell.playerName.text = playerFullName(player: players[indexPath.row])
         
         return cell
+    }
+    
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

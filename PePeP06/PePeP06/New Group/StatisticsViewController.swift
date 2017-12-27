@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatisticsViewController: UIViewController, UITableViewDataSource {
+class StatisticsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Properties
     
     var categories = [Category]() {
@@ -35,6 +35,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource {
         
         navigationItem.title = "Sarjataulukko"
         tableView.dataSource = self
+        tableView.delegate = self
         populateCategories()
     }
     
@@ -65,6 +66,12 @@ class StatisticsViewController: UIViewController, UITableViewDataSource {
     }
     
 
+    // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     
     // MARK: - Methods
     
