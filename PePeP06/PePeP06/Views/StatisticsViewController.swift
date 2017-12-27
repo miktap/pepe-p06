@@ -8,14 +8,17 @@
 
 import UIKit
 
-class StatisticsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class StatisticsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataServiceDelegate {
     // MARK: - Properties
     
-    var categories = [Category]() {
+    var id = "StatisticsViewController"
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var dataService: DataService!
+    var categoryList = [Category]() {
         didSet {
             if currentCategory == nil {
                 log.debug("Setting first active category as the current one")
-                currentCategory = categories.first(where: {$0.competition_active == "1"})
+                currentCategory = categoryList.first(where: {$0.competition_active == "1"})
             }
         }
     }
@@ -37,12 +40,22 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         tableView.delegate = self
         
+        dataService = appDelegate.dataService
+        
         // Pull-up refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(populateCategories), for: .valueChanged)
+        refreshControl.addTarget(dataService, action: #selector(dataService.populateCategories), for: .valueChanged)
         tableView.refreshControl = refreshControl
 
-        populateCategories()
+        dataService.populateCategories()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        dataService.addDelegate(delegate: self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        dataService.removeDelegate(delegate: self)
     }
     
     
@@ -79,26 +92,11 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    // MARK: - Methods
+    // MARK: - DataServiceDelegate
     
-    @objc func populateCategories() {
-        let tasoClient = TasoClient()
-        tasoClient.getClub()?
-            .then { response -> Void in
-                log.debug("Status code: \(response.statusCode)")
-                if let data = response.data, let message = String(data: data, encoding: .utf8) {
-                    log.debug("Message: \(message)")
-                    if let clubListing = ClubListing(JSONString: message), let club = clubListing.club {
-                        log.debug("Got club: \(club.name ?? "")")
-                        self.categories = ClubFilter.getCategories(club: club, teams: Constants.Settings.selectedTeams, competitionsIncluding: Constants.Settings.selectedCompetitions)
-                    }
-                }
-            }.always {
-                self.tableView.refreshControl?.endRefreshing()
-            }.catch { error in
-                // TODO: AlertDialog
-                log.error(error)
-        }
+    func categoriesPopulated(categories: [Category], error: Error?) {
+        tableView.refreshControl?.endRefreshing()
+        categoryList = categories
     }
 }
 

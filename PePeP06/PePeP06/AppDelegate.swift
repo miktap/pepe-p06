@@ -16,7 +16,7 @@ let logFormat = "$Dyyyy-MM-dd HH:mm:ss.SSS$d $L $N.$F:$l - $M"
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var dataService: DataService!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // SwiftyBeaver logging configuration
@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         console.format = logFormat
         log.addDestination(console)
 
+        dataService = DataService(client: TasoClient())
+        
         return true
     }
 

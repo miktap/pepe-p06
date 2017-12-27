@@ -25,6 +25,7 @@
 		C353B5F61FF400EF00526AD3 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F31FF400EF00526AD3 /* StatisticsViewController.swift */; };
 		C353B5F71FF400EF00526AD3 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F41FF400EF00526AD3 /* TeamViewController.swift */; };
 		C353B5F91FF4160600526AD3 /* PlayerListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F81FF4160600526AD3 /* PlayerListing.swift */; };
+		C353B5FC1FF41AE700526AD3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5FB1FF41AE700526AD3 /* DataService.swift */; };
 		C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */; };
 		C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */; };
 		C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2D1FEFA1D300A913C1 /* Player.swift */; };
@@ -74,6 +75,7 @@
 		C353B5F31FF400EF00526AD3 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		C353B5F41FF400EF00526AD3 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		C353B5F81FF4160600526AD3 /* PlayerListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListing.swift; sourceTree = "<group>"; };
+		C353B5FB1FF41AE700526AD3 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClient.swift; sourceTree = "<group>"; };
 		C3714E2D1FEFA1D300A913C1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		C3343AD21EABB340009AED76 /* PePeP06 */ = {
 			isa = PBXGroup;
 			children = (
+				C353B5FA1FF41AC500526AD3 /* DataSource */,
 				C353B5E71FF294F300526AD3 /* Filters */,
 				C3D96BF01FEEB228009CFBC8 /* Taso */,
 				C3714E221FEECD6900A913C1 /* Utilities */,
@@ -190,6 +193,14 @@
 				C353B5F41FF400EF00526AD3 /* TeamViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C353B5FA1FF41AC500526AD3 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				C353B5FB1FF41AE700526AD3 /* DataService.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		C3714E221FEECD6900A913C1 /* Utilities */ = {
@@ -487,6 +498,7 @@
 				C3714E351FF00DAE00A913C1 /* TeamListing.swift in Sources */,
 				C353B5DC1FF2447500526AD3 /* Category.swift in Sources */,
 				C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */,
+				C353B5FC1FF41AE700526AD3 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
