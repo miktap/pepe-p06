@@ -36,6 +36,12 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
         navigationItem.title = "Sarjataulukko"
         tableView.dataSource = self
         tableView.delegate = self
+        
+        // Pull-up refresh
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(populateCategories), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+
         populateCategories()
     }
     
@@ -75,7 +81,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     
     // MARK: - Methods
     
-    func populateCategories() {
+    @objc func populateCategories() {
         let tasoClient = TasoClient()
         tasoClient.getClub()?
             .then { response -> Void in
@@ -87,6 +93,8 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
                         self.categories = ClubFilter.getCategories(club: club, teams: Constants.Settings.selectedTeams, competitionsIncluding: Constants.Settings.selectedCompetitions)
                     }
                 }
+            }.always {
+                self.tableView.refreshControl?.endRefreshing()
             }.catch { error in
                 // TODO: AlertDialog
                 log.error(error)

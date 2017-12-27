@@ -35,6 +35,12 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationItem.title = ""
         tableView.dataSource = self
         tableView.delegate = self
+        
+        // Pull-up refresh
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(populatePlayers), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        
         populatePlayers()
     }
 
@@ -63,7 +69,7 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: - Methods
     
-    func populatePlayers() {
+    @objc func populatePlayers() {
         let tasoClient = TasoClient()
         tasoClient.getTeam(team_id: Constants.Taso.pepeFutsalID)?
             .then { response -> Void in
@@ -82,7 +88,9 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         log.warning("Unable to parse team")
                     }
                 }
-            }.catch { error in
+            }.always {
+                self.tableView.refreshControl?.endRefreshing()
+            } .catch { error in
                 // TODO: AlertDialog
                 log.error(error)
         }
