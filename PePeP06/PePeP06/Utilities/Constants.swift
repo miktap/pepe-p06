@@ -8,6 +8,12 @@
 import Foundation
 
 struct Constants {
+    /// Default app settings
+    struct Settings {
+        static let selectedTeams = [Constants.Taso.pepeFutsalID, Constants.Taso.pepeFootballID]
+        static let selectedCompetitions = ["Jalkapallo", "Futsal"]
+    }
+    
     /// Taso related constants
     struct Taso {
         static let pepeFutsalID = "141460"

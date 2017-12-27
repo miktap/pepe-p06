@@ -18,6 +18,8 @@ class ClubFilter {
      * - Returns: A list of categories.
      */
     static func getCategories(club: Club, teams: [String]? = nil, competitionsIncluding: [String]? = nil) -> [Category] {
+        log.debug("Filtering categories from club: \(club.name ?? "")")
+        
         // Select teams
         var selectedTeams: [Team]?
         if let teams = teams {

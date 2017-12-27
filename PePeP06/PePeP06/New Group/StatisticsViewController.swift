@@ -65,6 +65,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource {
                     log.debug("Message: \(message)")
                     if let clubListing = ClubListing(JSONString: message), let club = clubListing.club {
                         log.debug("Got club: \(club.name ?? "")")
+                        self.categories = ClubFilter.getCategories(club: club, teams: Constants.Settings.selectedTeams, competitionsIncluding: Constants.Settings.selectedCompetitions)
                     }
                 }
             }.catch { error in
