@@ -11,12 +11,21 @@ import UIKit
 class StatisticsViewController: UIViewController, UITableViewDataSource {
     // MARK: - Properties
     
-    var categories = [Category]()
-    var currentCategory: Category? {
+    var categories = [Category]() {
         didSet {
-            log.debug("Category changed to \(currentCategory?.category_name), time to change statistics view")
+            if currentCategory == nil {
+                log.debug("Setting first active category as the current one")
+                currentCategory = categories.first(where: {$0.competition_active == "1"})
+            }
         }
     }
+    var currentCategory: Category? {
+        didSet {
+            log.debug("Category changed to \(currentCategory?.category_name ?? ""), time to change statistics view")
+            tableView.reloadData()
+        }
+    }
+    @IBOutlet weak var tableView: UITableView!
     
     
     // MARK: - UIViewController
@@ -25,6 +34,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         navigationItem.title = "Sarjataulukko"
+        tableView.dataSource = self
         populateCategories()
     }
     
@@ -47,6 +57,8 @@ class StatisticsViewController: UIViewController, UITableViewDataSource {
         var cell = UITableViewCell()
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
+            cell.textLabel?.text = currentCategory?.category_name
+            cell.detailTextLabel?.text = currentCategory?.competition_season
         }
         
         return cell

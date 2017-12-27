@@ -277,6 +277,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2R8-La-Mrl"/>
+                    <connections>
+                        <outlet property="tableView" destination="NUl-mb-D0a" id="MRf-RM-kfF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
