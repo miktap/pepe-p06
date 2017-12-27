@@ -17,7 +17,7 @@ class ClubFilter {
      * contain one of the listed strings.
      * - Returns: A list of categories.
      */
-    static func getCategories(club: Club, teams: [String]? = nil, competitionsIncluding: [String]? = nil) -> [Category]? {
+    static func getCategories(club: Club, teams: [String]? = nil, competitionsIncluding: [String]? = nil) -> [Category] {
         // Select teams
         var selectedTeams: [Team]?
         if let teams = teams {
@@ -29,7 +29,7 @@ class ClubFilter {
         }
         
         // Select categories from teams
-        var selectedCategories: [Category]? = nil
+        var selectedCategories = [Category]()
         if let selectedTeams = selectedTeams {
             if let competitionsIncluding = competitionsIncluding {
                 log.debug("Include only categories whose competitions contain one of: \(competitionsIncluding)")
@@ -39,7 +39,7 @@ class ClubFilter {
                             if let competition = category.competition_name,
                                 competition.contains(competitionString) {
                                 log.debug("Found a category '\(category.category_id ?? "")' with a competition match '\(competitionString)'")
-                                selectedCategories?.append(category)
+                                selectedCategories.append(category)
                                 return
                             }
                         }
@@ -49,7 +49,7 @@ class ClubFilter {
                 log.debug("Include all categories from the selected teams")
                 selectedTeams.forEach {
                     if let categories = $0.categories {
-                        selectedCategories?.append(contentsOf: categories)
+                        selectedCategories.append(contentsOf: categories)
                     }
                 }
             }
