@@ -11,7 +11,7 @@ import ObjectMapper
 struct Competition: Mappable {
     // MARK: - Properties
     
-    var competition_id: String?
+    var competition_id: String!
     var competition_name: String?
     var competition_status: String?
     var season_id: String?

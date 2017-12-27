@@ -1,0 +1,273 @@
+{
+    "call": {
+        "method": "getClub",
+        "status": "ok"
+    },
+    "club": {
+        "club_id": "3077",
+        "name": "PERTTELIN PEIKOT",
+        "abbrevation": "PePe",
+        "www": "",
+        "crest": "https://torneopal-sentinelsoftware.netdna-ssl.com/logo/palloliitto/3077x.png",
+        "subtitle": "",
+        "region": "spllsuomi",
+        "district": "spllsuomi",
+        "district_name": "Länsi-Suomi",
+        "home_venue_id": "150",
+        "home_venue_name": "Pertteli Kaivola nurmi",
+        "contact_name": "Samuli Talvia",
+        "contact_address": "Kuuselantie 33",
+        "contact_zipcode": "25360",
+        "contact_city": "Pertteli",
+        "contact_phone": "0408238693",
+        "contact_email": "samuli.talvia@gmail.com",
+        "category_groups": [
+                            {
+                            "category_group": "3",
+                            "category_group_name": "Pojat"
+                            },
+                            {
+                            "category_group": "4",
+                            "category_group_name": "Tytöt"
+                            }
+                            ],
+        "teams": [
+                  {
+                  "team_id": "134168",
+                  "team_name": "PePe",
+                  "age_group": "",
+                  "gender": "",
+                  "home_venue_id": "150",
+                  "home_venue_name": "Pertteli Kaivola nurmi",
+                  "categories": [
+                                 {
+                                 "tournament_id": "lsjptur17",
+                                 "tournament_name": "Länsi-Suomi Turnaukset 2017",
+                                 "tournament_season": "2017",
+                                 "tournament_active": "1",
+                                 "competition_id": "lsjptur17",
+                                 "competition_name": "Länsi-Suomi Turnaukset 2017",
+                                 "competition_season": "2017",
+                                 "competition_active": "1",
+                                 "category_id": "KNP11",
+                                 "category_name": "KNP11",
+                                 "category_team_name": "PePe"
+                                 }
+                                 ]
+                  },
+                  {
+                  "team_id": "134169",
+                  "team_name": "Perttelin Peikot",
+                  "age_group": "",
+                  "gender": "",
+                  "home_venue_id": "150",
+                  "home_venue_name": "Pertteli Kaivola nurmi",
+                  "categories": [
+                                 {
+                                 "tournament_id": "lsjptur17",
+                                 "tournament_name": "Länsi-Suomi Turnaukset 2017",
+                                 "tournament_season": "2017",
+                                 "tournament_active": "1",
+                                 "competition_id": "lsjptur17",
+                                 "competition_name": "Länsi-Suomi Turnaukset 2017",
+                                 "competition_season": "2017",
+                                 "competition_active": "1",
+                                 "category_id": "KNP11",
+                                 "category_name": "KNP11",
+                                 "category_team_name": "Perttelin Peikot"
+                                 }
+                                 ]
+                  },
+                  {
+                  "team_id": "138628",
+                  "team_name": "Pepe",
+                  "age_group": "",
+                  "gender": "",
+                  "home_venue_id": "150",
+                  "home_venue_name": "Pertteli Kaivola nurmi",
+                  "categories": [
+                                 {
+                                 "tournament_id": "apu_0001",
+                                 "tournament_name": "Jymy Cup 2017",
+                                 "tournament_season": "",
+                                 "tournament_active": "1",
+                                 "competition_id": "apu_0001",
+                                 "competition_name": "Jymy Cup 2017",
+                                 "competition_season": "",
+                                 "competition_active": "1",
+                                 "category_id": "P07H",
+                                 "category_name": "Pojat 07 haaste",
+                                 "category_team_name": "Pepe"
+                                 }
+                                 ]
+                  },
+                  {
+                  "team_id": "109887",
+                  "team_name": "PePe",
+                  "age_group": "",
+                  "gender": "",
+                  "home_venue_id": "150",
+                  "home_venue_name": "Pertteli Kaivola nurmi",
+                  "categories": [
+                                 {
+                                 "tournament_id": "lsjp17",
+                                 "tournament_name": "Länsi-Suomi Jalkapallo 2017",
+                                 "tournament_season": "2017",
+                                 "tournament_active": "1",
+                                 "competition_id": "lsjp17",
+                                 "competition_name": "Länsi-Suomi Jalkapallo 2017",
+                                 "competition_season": "2017",
+                                 "competition_active": "1",
+                                 "category_id": "P111",
+                                 "category_name": "P11 Liiga 8v8",
+                                 "category_team_name": "PePe"
+                                 },
+                                 {
+                                 "tournament_id": "tkujptur16",
+                                 "tournament_name": "Turku Turnaukset 2016",
+                                 "tournament_season": "2016",
+                                 "tournament_active": "0",
+                                 "competition_id": "tkujptur16",
+                                 "competition_name": "Turku Turnaukset 2016",
+                                 "competition_season": "2016",
+                                 "competition_active": "0",
+                                 "category_id": "KNE10",
+                                 "category_name": "KNE10",
+                                 "category_team_name": "PePe"
+                                 },
+                                 {
+                                 "tournament_id": "tkujp16",
+                                 "tournament_name": "Turku Jalkapallo 2016",
+                                 "tournament_season": "2016",
+                                 "tournament_active": "0",
+                                 "competition_id": "tkujp16",
+                                 "competition_name": "Turku Jalkapallo 2016",
+                                 "competition_season": "2016",
+                                 "competition_active": "0",
+                                 "category_id": "P06L",
+                                 "category_name": "E10 Liiga 8v8",
+                                 "category_team_name": "PePe"
+                                 }
+                                 ]
+                  },
+                  {
+                  "team_id": "141460",
+                  "team_name": "PePe",
+                  "age_group": "",
+                  "gender": "",
+                  "home_venue_id": "150",
+                  "home_venue_name": "Pertteli Kaivola nurmi",
+                  "categories": [
+                                 {
+                                 "tournament_id": "lsfs1718",
+                                 "tournament_name": "Länsi-Suomi Futsal 2017-18",
+                                 "tournament_season": "2017-18",
+                                 "tournament_active": "1",
+                                 "competition_id": "lsfs1718",
+                                 "competition_name": "Länsi-Suomi Futsal 2017-18",
+                                 "competition_season": "2017-18",
+                                 "competition_active": "1",
+                                 "category_id": "FP12",
+                                 "category_name": "Futsal P12 Liiga",
+                                 "category_team_name": "PePe"
+                                 }
+                                 ]
+                  },
+                  {
+                  "team_id": "110587",
+                  "team_name": "PePe",
+                  "age_group": "",
+                  "gender": "",
+                  "home_venue_id": "150",
+                  "home_venue_name": "Pertteli Kaivola nurmi",
+                  "categories": [
+                                 {
+                                 "tournament_id": "lsjp17",
+                                 "tournament_name": "Länsi-Suomi Jalkapallo 2017",
+                                 "tournament_season": "2017",
+                                 "tournament_active": "1",
+                                 "competition_id": "lsjp17",
+                                 "competition_name": "Länsi-Suomi Jalkapallo 2017",
+                                 "competition_season": "2017",
+                                 "competition_active": "1",
+                                 "category_id": "P10_5",
+                                 "category_name": "P10 Ykkönen 5v5",
+                                 "category_team_name": "PePe"
+                                 },
+                                 {
+                                 "tournament_id": "tkujp16",
+                                 "tournament_name": "Turku Jalkapallo 2016",
+                                 "tournament_season": "2016",
+                                 "tournament_active": "0",
+                                 "competition_id": "tkujp16",
+                                 "competition_name": "Turku Jalkapallo 2016",
+                                 "competition_season": "2016",
+                                 "competition_active": "0",
+                                 "category_id": "P07Y",
+                                 "category_name": "F9 Ykkönen 5v5",
+                                 "category_team_name": "PePe"
+                                 }
+                                 ]
+                  },
+                  {
+                  "team_id": "110225",
+                  "team_name": "PePe",
+                  "age_group": "",
+                  "gender": "",
+                  "home_venue_id": "150",
+                  "home_venue_name": "Pertteli Kaivola nurmi",
+                  "categories": [
+                                 {
+                                 "tournament_id": "lsjp17",
+                                 "tournament_name": "Länsi-Suomi Jalkapallo 2017",
+                                 "tournament_season": "2017",
+                                 "tournament_active": "1",
+                                 "competition_id": "lsjp17",
+                                 "competition_name": "Länsi-Suomi Jalkapallo 2017",
+                                 "competition_season": "2017",
+                                 "competition_active": "1",
+                                 "category_id": "P92",
+                                 "category_name": "P9 Ykkönen 5v5",
+                                 "category_team_name": "PePe"
+                                 },
+                                 {
+                                 "tournament_id": "tkujp16",
+                                 "tournament_name": "Turku Jalkapallo 2016",
+                                 "tournament_season": "2016",
+                                 "tournament_active": "0",
+                                 "competition_id": "tkujp16",
+                                 "competition_name": "Turku Jalkapallo 2016",
+                                 "competition_season": "2016",
+                                 "competition_active": "0",
+                                 "category_id": "P08Y",
+                                 "category_name": "F8 Ykkönen 5v5",
+                                 "category_team_name": "PePe"
+                                 }
+                                 ]
+                  },
+                  {
+                  "team_id": "138629",
+                  "team_name": "Perttelin Peikot",
+                  "age_group": "",
+                  "gender": "",
+                  "home_venue_id": "150",
+                  "home_venue_name": "Pertteli Kaivola nurmi",
+                  "categories": [
+                                 {
+                                 "tournament_id": "apu_0001",
+                                 "tournament_name": "Jymy Cup 2017",
+                                 "tournament_season": "",
+                                 "tournament_active": "1",
+                                 "competition_id": "apu_0001",
+                                 "competition_name": "Jymy Cup 2017",
+                                 "competition_season": "",
+                                 "competition_active": "1",
+                                 "category_id": "T06",
+                                 "category_name": "Tytöt 06-07 8v8",
+                                 "category_team_name": "Perttelin Peikot"
+                                 }
+                                 ]
+                  }
+                  ]
+    }
+}

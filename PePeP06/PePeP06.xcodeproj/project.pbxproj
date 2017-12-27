@@ -11,7 +11,7 @@
 		9466E2092AE7B5F4F2FF86F5 /* Pods_PePeP06.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66971CDC79E6FED50FBD2976 /* Pods_PePeP06.framework */; };
 		C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD31EABB340009AED76 /* AppDelegate.swift */; };
 		C3343AD61EABB340009AED76 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD51EABB340009AED76 /* TeamViewController.swift */; };
-		C3343AD81EABB340009AED76 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD71EABB340009AED76 /* SecondViewController.swift */; };
+		C3343AD81EABB340009AED76 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD71EABB340009AED76 /* StatisticsViewController.swift */; };
 		C3343ADB1EABB340009AED76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343AD91EABB340009AED76 /* Main.storyboard */; };
 		C3343ADD1EABB340009AED76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADC1EABB340009AED76 /* Assets.xcassets */; };
 		C3343AE01EABB340009AED76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADE1EABB340009AED76 /* LaunchScreen.storyboard */; };
@@ -19,6 +19,10 @@
 		C353B5DE1FF2463D00526AD3 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5DD1FF2463D00526AD3 /* Club.swift */; };
 		C353B5E01FF2498600526AD3 /* ClubListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5DF1FF2498600526AD3 /* ClubListing.swift */; };
 		C353B5E21FF24AE100526AD3 /* CategoryListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5E11FF24AE100526AD3 /* CategoryListing.swift */; };
+		C353B5E41FF2796B00526AD3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5E31FF2796B00526AD3 /* Constants.swift */; };
+		C353B5E61FF293D800526AD3 /* ClubFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5E51FF293D800526AD3 /* ClubFilter.swift */; };
+		C353B5E91FF2DD1B00526AD3 /* ClubFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5E81FF2DD1B00526AD3 /* ClubFilterTests.swift */; };
+		C353B5EC1FF2DDF300526AD3 /* Club.json in Resources */ = {isa = PBXBuildFile; fileRef = C353B5EB1FF2DDF300526AD3 /* Club.json */; };
 		C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */; };
 		C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */; };
 		C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2D1FEFA1D300A913C1 /* Player.swift */; };
@@ -52,7 +56,7 @@
 		C3343AD01EABB340009AED76 /* PePeP06.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PePeP06.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3343AD31EABB340009AED76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3343AD51EABB340009AED76 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
-		C3343AD71EABB340009AED76 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		C3343AD71EABB340009AED76 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		C3343ADA1EABB340009AED76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3343ADC1EABB340009AED76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3343ADF1EABB340009AED76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,11 +67,14 @@
 		C353B5DD1FF2463D00526AD3 /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		C353B5DF1FF2498600526AD3 /* ClubListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubListing.swift; sourceTree = "<group>"; };
 		C353B5E11FF24AE100526AD3 /* CategoryListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListing.swift; sourceTree = "<group>"; };
+		C353B5E31FF2796B00526AD3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C353B5E51FF293D800526AD3 /* ClubFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubFilter.swift; sourceTree = "<group>"; };
+		C353B5E81FF2DD1B00526AD3 /* ClubFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubFilterTests.swift; sourceTree = "<group>"; };
+		C353B5EB1FF2DDF300526AD3 /* Club.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Club.json; sourceTree = "<group>"; };
 		C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClient.swift; sourceTree = "<group>"; };
 		C3714E2D1FEFA1D300A913C1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C3714E2F1FEFA3B200A913C1 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		C3714E311FEFA6C900A913C1 /* PePeP06Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PePeP06Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C3714E341FF00DAE00A913C1 /* TeamListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListing.swift; sourceTree = "<group>"; };
 		C37B53EC1FF0319D00B3B995 /* WebClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClientTests.swift; sourceTree = "<group>"; };
 		C37B53EE1FF037E700B3B995 /* TasoClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClientTests.swift; sourceTree = "<group>"; };
@@ -131,6 +138,7 @@
 		C3343AD21EABB340009AED76 /* PePeP06 */ = {
 			isa = PBXGroup;
 			children = (
+				C353B5E71FF294F300526AD3 /* Filters */,
 				C3D96BF01FEEB228009CFBC8 /* Taso */,
 				C3714E221FEECD6900A913C1 /* Utilities */,
 				C37B53F51FF0F45800B3B995 /* ViewControllers */,
@@ -146,18 +154,36 @@
 		C3343AE91EABB340009AED76 /* PePeP06Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C353B5EA1FF2DDB800526AD3 /* Data */,
 				C3714E271FEEE69800A913C1 /* Mocks */,
 				C3343AEC1EABB340009AED76 /* Info.plist */,
-				C3714E311FEFA6C900A913C1 /* PePeP06Tests-Bridging-Header.h */,
-				C37B53EC1FF0319D00B3B995 /* WebClientTests.swift */,
+				C353B5E81FF2DD1B00526AD3 /* ClubFilterTests.swift */,
 				C37B53EE1FF037E700B3B995 /* TasoClientTests.swift */,
+				C37B53EC1FF0319D00B3B995 /* WebClientTests.swift */,
 			);
 			path = PePeP06Tests;
+			sourceTree = "<group>";
+		};
+		C353B5E71FF294F300526AD3 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				C353B5E51FF293D800526AD3 /* ClubFilter.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		C353B5EA1FF2DDB800526AD3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C353B5EB1FF2DDF300526AD3 /* Club.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		C3714E221FEECD6900A913C1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C353B5E31FF2796B00526AD3 /* Constants.swift */,
 				C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */,
 			);
 			path = Utilities;
@@ -190,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				C37B53F61FF0F49400B3B995 /* PlayerViewController.swift */,
-				C3343AD71EABB340009AED76 /* SecondViewController.swift */,
+				C3343AD71EABB340009AED76 /* StatisticsViewController.swift */,
 				C3343AD51EABB340009AED76 /* TeamViewController.swift */,
 			);
 			name = ViewControllers;
@@ -318,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C353B5EC1FF2DDF300526AD3 /* Club.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +467,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BDC41A1FF127AB0031512F /* Competition.swift in Sources */,
-				C3343AD81EABB340009AED76 /* SecondViewController.swift in Sources */,
+				C353B5E41FF2796B00526AD3 /* Constants.swift in Sources */,
+				C3343AD81EABB340009AED76 /* StatisticsViewController.swift in Sources */,
 				C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */,
 				C353B5DE1FF2463D00526AD3 /* Club.swift in Sources */,
 				C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */,
@@ -449,6 +477,7 @@
 				C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */,
 				C353B5E21FF24AE100526AD3 /* CategoryListing.swift in Sources */,
 				C3714E301FEFA3B200A913C1 /* Team.swift in Sources */,
+				C353B5E61FF293D800526AD3 /* ClubFilter.swift in Sources */,
 				C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */,
 				C3714E351FF00DAE00A913C1 /* TeamListing.swift in Sources */,
 				C353B5DC1FF2447500526AD3 /* Category.swift in Sources */,
@@ -463,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37B53ED1FF0319D00B3B995 /* WebClientTests.swift in Sources */,
+				C353B5E91FF2DD1B00526AD3 /* ClubFilterTests.swift in Sources */,
 				C37B53EF1FF037E700B3B995 /* TasoClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

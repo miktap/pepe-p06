@@ -11,7 +11,7 @@ import ObjectMapper
 struct Team: Mappable {
     // MARK: - Properties
     
-    var team_id: String?
+    var team_id: String!
     var team_name: String?
     var players: [Player]?
     var categories: [Category]?
