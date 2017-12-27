@@ -24,6 +24,7 @@
 		C353B5F51FF400EF00526AD3 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F21FF400EF00526AD3 /* PlayerViewController.swift */; };
 		C353B5F61FF400EF00526AD3 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F31FF400EF00526AD3 /* StatisticsViewController.swift */; };
 		C353B5F71FF400EF00526AD3 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F41FF400EF00526AD3 /* TeamViewController.swift */; };
+		C353B5F91FF4160600526AD3 /* PlayerListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F81FF4160600526AD3 /* PlayerListing.swift */; };
 		C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */; };
 		C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */; };
 		C3714E2E1FEFA1D300A913C1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2D1FEFA1D300A913C1 /* Player.swift */; };
@@ -72,6 +73,7 @@
 		C353B5F21FF400EF00526AD3 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		C353B5F31FF400EF00526AD3 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		C353B5F41FF400EF00526AD3 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		C353B5F81FF4160600526AD3 /* PlayerListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListing.swift; sourceTree = "<group>"; };
 		C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClient.swift; sourceTree = "<group>"; };
 		C3714E2D1FEFA1D300A913C1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				C3714E341FF00DAE00A913C1 /* TeamListing.swift */,
 				C353B5DF1FF2498600526AD3 /* ClubListing.swift */,
 				C353B5E11FF24AE100526AD3 /* CategoryListing.swift */,
+				C353B5F81FF4160600526AD3 /* PlayerListing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BDC41A1FF127AB0031512F /* Competition.swift in Sources */,
+				C353B5F91FF4160600526AD3 /* PlayerListing.swift in Sources */,
 				C353B5E41FF2796B00526AD3 /* Constants.swift in Sources */,
 				C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */,
 				C353B5DE1FF2463D00526AD3 /* Club.swift in Sources */,

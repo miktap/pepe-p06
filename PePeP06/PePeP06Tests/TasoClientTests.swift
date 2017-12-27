@@ -75,6 +75,20 @@ class TasoClientTests: QuickSpec {
                     expect(clubListing?.club?.club_id).toEventually(equal("3077"), timeout: 3)
                 }
             }
+            
+            describe("getPlayer") {
+                it("gets player Jimi") {
+                    var playerListing: PlayerListing?
+                    tasoClient.getPlayer(player_id: "290384")!
+                        .then { response -> Void in
+                            let message = String(data: response.data!, encoding: .utf8)
+                            log.debug(message!)
+                            playerListing = PlayerListing(JSONString: message!)
+                    }
+                    
+                    expect(playerListing?.player?.first_name).toEventually(equal("Jimi"), timeout: 3)
+                }
+            }
         }
     }
 }

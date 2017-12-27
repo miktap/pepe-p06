@@ -50,6 +50,14 @@ protocol TasoClientProtocol {
      * - Returns: A promise of a `WebResponse`
      */
     func getClub(club_id: String?) -> Promise<WebResponse>?
+    
+    /**
+     * Get a player.
+     *
+     * - Parameter player_id: Player ID
+     * - Returns: A promise of a `WebResponse`
+     */
+    func getPlayer(player_id: String) -> Promise<WebResponse>?
 }
 
 /**
@@ -126,6 +134,12 @@ class TasoClient: WebClient, TasoClientProtocol {
     func getClub(club_id: String? = nil) -> Promise<WebResponse>? {
         let query = TasoQuery(queries: [URLQueryItem(name: "club_id", value: club_id)])
         let request = WebRequest(url: tasoUrl + "getClub", method: "GET", queryParams: query.output, headers: nil, body: nil)
+        return invoke(webRequest: request)
+    }
+    
+    func getPlayer(player_id: String) -> Promise<WebResponse>? {
+        let query = TasoQuery(queries: [URLQueryItem(name: "player_id", value: player_id)])
+        let request = WebRequest(url: tasoUrl + "getPlayer", method: "GET", queryParams: query.output, headers: nil, body: nil)
         return invoke(webRequest: request)
     }
 }
