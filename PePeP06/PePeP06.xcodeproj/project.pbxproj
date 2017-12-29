@@ -11,6 +11,7 @@
 		9466E2092AE7B5F4F2FF86F5 /* Pods_PePeP06.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66971CDC79E6FED50FBD2976 /* Pods_PePeP06.framework */; };
 		C33431951FF5644D0050818C /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33431941FF5644D0050818C /* DataServiceTests.swift */; };
 		C33431971FF568D10050818C /* MockTasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33431961FF568D10050818C /* MockTasoClient.swift */; };
+		C33431991FF6C4C70050818C /* Team.json in Resources */ = {isa = PBXBuildFile; fileRef = C33431981FF6C4C70050818C /* Team.json */; };
 		C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD31EABB340009AED76 /* AppDelegate.swift */; };
 		C3343ADB1EABB340009AED76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343AD91EABB340009AED76 /* Main.storyboard */; };
 		C3343ADD1EABB340009AED76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADC1EABB340009AED76 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		B9EE9C72E41601BE79FE955E /* Pods-PePeP06.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PePeP06.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PePeP06/Pods-PePeP06.debug.xcconfig"; sourceTree = "<group>"; };
 		C33431941FF5644D0050818C /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
 		C33431961FF568D10050818C /* MockTasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTasoClient.swift; sourceTree = "<group>"; };
+		C33431981FF6C4C70050818C /* Team.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Team.json; sourceTree = "<group>"; };
 		C3343AD01EABB340009AED76 /* PePeP06.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PePeP06.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3343AD31EABB340009AED76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3343ADA1EABB340009AED76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				C353B5EB1FF2DDF300526AD3 /* Club.json */,
+				C33431981FF6C4C70050818C /* Team.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C33431991FF6C4C70050818C /* Team.json in Resources */,
 				C353B5EC1FF2DDF300526AD3 /* Club.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

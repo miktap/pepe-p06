@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var dataService: DataService!
+    
+    // MARK: - Static variables
+    
+    static var dataService: DataService {return (UIApplication.shared.delegate as! AppDelegate).dataService}
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // SwiftyBeaver logging configuration

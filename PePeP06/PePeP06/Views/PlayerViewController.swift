@@ -7,17 +7,26 @@
 
 import UIKit
 
-class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataServiceDelegate {
     // MARK: - Properties
     
+    var id = "PlayerViewController"
     var player: TasoPlayer?
-
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var gamesLabel: UILabel!
-    @IBOutlet weak var goalsLabel: UILabel!
-    @IBOutlet weak var passesLabel: UILabel!
-    @IBOutlet weak var yellowsLabel: UILabel!
-    @IBOutlet weak var redsLabel: UILabel!
+    var dataService: DataService!
+    var categoryList = [TasoCategory]() {
+        didSet {
+            if currentCategory == nil {
+                log.debug("Setting first active category as the current one")
+                currentCategory = categoryList.first(where: {$0.competition_active == "1"})
+            }
+        }
+    }
+    var currentCategory: TasoCategory? {
+        didSet {
+            log.debug("Category changed to \(currentCategory?.category_name ?? ""), time to change statistics view")
+            tableView.reloadData()
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -30,18 +39,49 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         
-        updateStats()
+        dataService = AppDelegate.dataService
+        dataService.populateCategories()
+        
+        // Pull-up refresh
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(dataService, action: #selector(dataService.populateCategories), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+
+        //updateStats()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        dataService.addDelegate(delegate: self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        dataService.removeDelegate(delegate: self)
+    }
+
     
     // MARK: - UITableViewDataSource
-        
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return 1
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
+        var cell = UITableViewCell()
+        if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
+            cell.textLabel?.text = currentCategory?.category_name
+            cell.detailTextLabel?.text = currentCategory?.competition_season
+        }
         
         return cell
     }
@@ -62,11 +102,34 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
         
-        nameLabel.text      = playerFullName(player: player)
-        gamesLabel.text     = player.matches
-        goalsLabel.text     = player.goals
-        passesLabel.text    = player.assists
-        yellowsLabel.text   = player.warnings
-        redsLabel.text      = player.suspensions
+//        nameLabel.text      = playerFullName(player: player)
+//        gamesLabel.text     = player.matches
+//        goalsLabel.text     = player.goals
+//        passesLabel.text    = player.assists
+//        yellowsLabel.text   = player.warnings
+//        redsLabel.text      = player.suspensions
     }
+    
+    
+    // MARK: - DataServiceDelegate
+    
+    func categoriesPopulated(categories: [TasoCategory]?, error: Error?) {
+        tableView.refreshControl?.endRefreshing()
+        if let error = error {
+            log.error(error)
+            // TODO: error dialog
+        } else {
+            if let categories = categories {
+                categoryList = categories
+            }
+        }
+    }
+    
+    func teamsPopulated(teams: [TasoTeam]?, error: Error?) {
+        
+    }
+}
+
+class PlayerInfoCell: UITableViewCell {
+    
 }

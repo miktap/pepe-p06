@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PromiseKit
 
 protocol DataServiceDelegate {
     var id: String {get}
@@ -13,10 +14,18 @@ protocol DataServiceDelegate {
     /**
      * Categories have been populated.
      *
-     * - Parameter categories: Populated categories
-     * - Paramter error: Error or nil if operation was successfull
+     * - Parameter categories: Populated categories or nil in case of an error
+     * - Parameter error: Error or nil if operation was successfull
      */
-    func categoriesPopulated(categories: [TasoCategory], error: Error?)
+    func categoriesPopulated(categories: [TasoCategory]?, error: Error?)
+    
+    /**
+     * Teams have been populated.
+     *
+     * - Parameter teams: Populated teams or nil in case of an error
+     * - Parameter error: Error or nil if operation was successfull
+     */
+    func teamsPopulated(teams: [TasoTeam]?, error: Error?)
 }
 
 enum DataServiceError: Error {
@@ -79,13 +88,53 @@ class DataService {
                                                                    competitionsIncluding: Constants.Settings.selectedCompetitions)
                         self.delegates.forEach {$0.categoriesPopulated(categories: categories, error: nil)}
                     } else {
-                        self.delegates.forEach {$0.categoriesPopulated(categories: [TasoCategory](), error: DataServiceError.parseError("Problems parsing Taso response to a club"))}
+                        self.delegates.forEach {$0.categoriesPopulated(categories: nil, error: DataServiceError.parseError("Problems parsing Taso response to a club"))}
                     }
                 } else {
-                    self.delegates.forEach {$0.categoriesPopulated(categories: [TasoCategory](), error: DataServiceError.responseError("Problems with Taso response data"))}
+                    self.delegates.forEach {$0.categoriesPopulated(categories: nil, error: DataServiceError.responseError("Problems with Taso response data"))}
                 }
             }.catch { error in
-                self.delegates.forEach {$0.categoriesPopulated(categories: [TasoCategory](), error: DataServiceError.unknownError(error.localizedDescription))}
+                self.delegates.forEach {$0.categoriesPopulated(categories: nil, error: DataServiceError.unknownError(error.localizedDescription))}
+        }
+    }
+    
+    /**
+     * Get teams and notify delegates.
+     *
+     * - Parameter team_ids: IDs of teams to get
+     */
+    func populateTeams(team_ids: [String]) {
+        var promises = [Promise<WebResponse>]()
+        team_ids.forEach {
+            if let promise = dataClient.getTeam(team_id: $0, competition_id: nil, category_id: nil) {
+                promises.append(promise)
+            }
+        }
+        
+        when(fulfilled: promises)
+            .then { results -> Void in
+                var teams = [TasoTeam]()
+                var error = false
+                results.forEach { response in
+                    if let data = response.data, let message = String(data: data, encoding: .utf8) {
+                        log.debug("Message: \(message)")
+                        if let teamListing = TasoTeamListing(JSONString: message), let team = teamListing.team {
+                            log.debug("Got team: \(team.team_name ?? "")")
+                            teams.append(team)
+                        } else {
+                            error = true
+                        }
+                    } else {
+                        error = true
+                    }
+                }
+                if error {
+                    self.delegates.forEach {$0.teamsPopulated(teams: nil, error: DataServiceError.responseError("Problems with Taso response data"))}
+                } else {
+                    self.delegates.forEach {$0.teamsPopulated(teams: teams, error: nil)}
+                }
+            }.catch { error in
+                self.delegates.forEach {$0.teamsPopulated(teams: nil, error: DataServiceError.unknownError(error.localizedDescription))}
         }
     }
 }

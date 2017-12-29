@@ -12,7 +12,6 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - Properties
     
     var id = "StatisticsViewController"
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dataService: DataService!
     var categoryList = [TasoCategory]() {
         didSet {
@@ -40,21 +39,22 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         tableView.delegate = self
         
-        dataService = appDelegate.dataService
-        
+        dataService = AppDelegate.dataService
+        dataService.populateCategories()
+
         // Pull-up refresh
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(dataService, action: #selector(dataService.populateCategories), for: .valueChanged)
         tableView.refreshControl = refreshControl
-
-        dataService.populateCategories()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         dataService.removeDelegate(delegate: self)
     }
     
@@ -69,7 +69,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
         if section == 0 {
             return 1
         } else {
-            return 0
+            return 1
         }
     }
     
@@ -94,9 +94,22 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     
     // MARK: - DataServiceDelegate
     
-    func categoriesPopulated(categories: [TasoCategory], error: Error?) {
+    func categoriesPopulated(categories: [TasoCategory]?, error: Error?) {
         tableView.refreshControl?.endRefreshing()
-        categoryList = categories
+        if let error = error {
+            log.error(error)
+            // TODO: error dialog
+        } else {
+            if let categories = categories {
+                categoryList = categories
+            }
+        }
     }
+    
+    func teamsPopulated(teams: [TasoTeam]?, error: Error?) {
+        
+    }
+    
+
 }
 
