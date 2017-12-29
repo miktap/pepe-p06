@@ -1,5 +1,5 @@
 //
-//  Player.swift
+//  TasoPlayer.swift
 //  PePeP06
 //
 //  Created by Mikko Tapaninen on 24/12/2017.
@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-struct Player: Mappable {
+struct TasoPlayer: Mappable {
     // MARK: - Properties
     
     var player_id: String!

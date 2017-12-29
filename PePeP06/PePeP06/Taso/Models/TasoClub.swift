@@ -1,5 +1,5 @@
 //
-//  Club.swift
+//  TasoClub.swift
 //  PePeP06
 //
 //  Created by Mikko Tapaninen on 26/12/2017.
@@ -8,13 +8,13 @@
 import Foundation
 import ObjectMapper
 
-struct Club: Mappable {
+struct TasoClub: Mappable {
     // MARK: - Properties
     
     var club_id: String!
     var name: String?
     var abbreviation: String?
-    var teams: [Team]?
+    var teams: [TasoTeam]?
     
     
     // MARK: - Mappable

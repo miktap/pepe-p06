@@ -16,7 +16,7 @@ class PlayerTableViewCell: UITableViewCell {
 class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Properties
     
-    var players = [Player]() {
+    var players = [TasoPlayer]() {
         didSet {
             if let tableView = tableView {
                 tableView.reloadData()
@@ -76,7 +76,7 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 log.debug("Status code: \(response.statusCode)")
                 if let data = response.data, let message = String(data: data, encoding: .utf8) {
                     log.debug("Message: \(message)")
-                    if let teamListing = TeamListing(JSONString: message) {
+                    if let teamListing = TasoTeamListing(JSONString: message) {
                         log.debug("Got team: \(teamListing.team.team_name ?? "")")
                         self.navigationItem.title = teamListing.team.team_name
                         if let teamPlayers = teamListing.team.players {

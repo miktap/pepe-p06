@@ -14,7 +14,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     var id = "StatisticsViewController"
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dataService: DataService!
-    var categoryList = [Category]() {
+    var categoryList = [TasoCategory]() {
         didSet {
             if currentCategory == nil {
                 log.debug("Setting first active category as the current one")
@@ -22,7 +22,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
     }
-    var currentCategory: Category? {
+    var currentCategory: TasoCategory? {
         didSet {
             log.debug("Category changed to \(currentCategory?.category_name ?? ""), time to change statistics view")
             tableView.reloadData()
@@ -94,7 +94,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     
     // MARK: - DataServiceDelegate
     
-    func categoriesPopulated(categories: [Category], error: Error?) {
+    func categoriesPopulated(categories: [TasoCategory], error: Error?) {
         tableView.refreshControl?.endRefreshing()
         categoryList = categories
     }

@@ -1,0 +1,109 @@
+//
+//  DataServiceTests.swift
+//  PePeP06Tests
+//
+//  Created by Mikko Tapaninen on 28/12/2017.
+//
+
+import Foundation
+import Quick
+import Nimble
+@testable import PePeP06
+
+class DataServiceTests: QuickSpec {
+    override func spec() {
+        describe("DataService") {
+            var dataService: DataService!
+            var mockTasoClient: MockTasoClient!
+            var mockDelegate: MockDataServiceDelegate!
+            
+            beforeEach {
+                mockTasoClient = MockTasoClient()
+                mockDelegate = MockDataServiceDelegate()
+                
+                dataService = DataService(client: mockTasoClient)
+                dataService.addDelegate(delegate: mockDelegate)
+            }
+            
+            describe("populateCategories") {
+                context("when promise rejects") {
+                    it("notifies delegates with an error") {
+                        mockTasoClient.rejectPromise = true
+                        
+                        dataService.populateCategories()
+                        
+                        expect(mockDelegate.categoriesPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.categoriesPopulatedCategories).toEventually(beEmpty())
+                        expect(mockDelegate.categoriesPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
+                    }
+                }
+                
+                context("when response has no data") {
+                    it("notifies delegates with an error") {
+                        mockTasoClient.webResponse = WebResponse(data: nil, statusCode: 200)
+                        
+                        dataService.populateCategories()
+                        
+                        expect(mockDelegate.categoriesPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.categoriesPopulatedCategories).toEventually(beEmpty())
+                        expect(mockDelegate.categoriesPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
+                    }
+                }
+                
+                context("when response cannot be parsed to 'ClubListing'") {
+                    it("notifies delegates with an error") {
+                        let json = """
+{
+    "club": {
+        "name": "PERTTELIN PEIKOT",
+        "abbrevation": "PePe"
+    }
+}
+
+"""
+                        mockTasoClient.webResponse = WebResponse(data: json.data(using: .utf8)!, statusCode: 200)
+                        
+                        dataService.populateCategories()
+                        
+                        expect(mockDelegate.categoriesPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.categoriesPopulatedCategories).toEventually(beEmpty())
+                        expect(mockDelegate.categoriesPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
+                    }
+                }
+                
+                context("when response is valid") {
+                    it("notifies delegates with categories") {
+                        let bundle = Bundle(for: type(of: self))
+                        let path = bundle.path(forResource: "Club", ofType: "json")!
+                        let url = URL(fileURLWithPath: path)
+                        let clubJSON = try! String(contentsOf: url, encoding: .utf8)
+                        mockTasoClient.webResponse = WebResponse(data: clubJSON.data(using: .utf8)!, statusCode: 200)
+                        
+                        dataService.populateCategories()
+                        
+                        expect(mockDelegate.categoriesPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.categoriesPopulatedCategories?.count).toEventually(equal(3))
+                        expect(mockDelegate.categoriesPopulatedError).toEventually(beNil())
+                    }
+                }
+            }
+        }
+    }
+}
+
+class MockDataServiceDelegate: DataServiceDelegate {
+    var id: String = "MockDataServiceDelegate"
+    
+    var categoriesPopulatedCalled = false
+    var categoriesPopulatedCategories: [TasoCategory]?
+    var categoriesPopulatedError: Error?
+    
+    func categoriesPopulated(categories: [TasoCategory], error: Error?) {
+        categoriesPopulatedCalled = true
+        categoriesPopulatedCategories = categories
+        categoriesPopulatedError = error
+    }
+    
+    
+}
+

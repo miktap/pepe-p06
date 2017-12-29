@@ -12,10 +12,12 @@ struct Constants {
     struct Settings {
         static let selectedTeams = [Constants.Taso.pepeFutsalID, Constants.Taso.pepeFootballID]
         static let selectedCompetitions = ["Jalkapallo", "Futsal"]
+        static let selectedClubID = Constants.Taso.pepeCludID
     }
     
     /// Taso related constants
     struct Taso {
+        static let pepeCludID = "3077"
         static let pepeFutsalID = "141460"
         static let pepeFootballID = "109887"
     }

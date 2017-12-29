@@ -1,5 +1,5 @@
 //
-//  ClubListing.swift
+//  TasoCategoryListing.swift
 //  PePeP06
 //
 //  Created by Mikko Tapaninen on 26/12/2017.
@@ -8,21 +8,21 @@
 import Foundation
 import ObjectMapper
 
-struct ClubListing: Mappable {
+struct TasoCategoryListing: Mappable {
     // MARK: - Properties
     
-    var club: Club?
+    var categories: [TasoCategory]?
     
     
     // MARK: - Mappable
     
     init?(map: Map) {
-        if map.JSON["club"] == nil {
+        if map.JSON["categories"] == nil {
             return nil
         }
     }
     
     mutating func mapping(map: Map) {
-        club <- map["club"]
+        categories <- map["categories"]
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Competition.swift
+//  TasoCompetition.swift
 //  PePeP06
 //
 //  Created by Mikko Tapaninen on 25/12/2017.
@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-struct Competition: Mappable {
+struct TasoCompetition: Mappable {
     // MARK: - Properties
     
     var competition_id: String!

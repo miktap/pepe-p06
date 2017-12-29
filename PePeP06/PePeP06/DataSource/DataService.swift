@@ -16,7 +16,7 @@ protocol DataServiceDelegate {
      * - Parameter categories: Populated categories
      * - Paramter error: Error or nil if operation was successfull
      */
-    func categoriesPopulated(categories: [Category], error: Error?)
+    func categoriesPopulated(categories: [TasoCategory], error: Error?)
 }
 
 enum DataServiceError: Error {
@@ -25,19 +25,23 @@ enum DataServiceError: Error {
     case unknownError(String)
 }
 
+/**
+ *
+ * `DataService` class provides methods to populate data models used by various views.
+ *
+ */
 class DataService {
     // MARK: - Properties
     
-    var dataClient: TasoClient
+    var dataClient: TasoClientProtocol
     var delegates = [DataServiceDelegate]()
     
     
     // MARK: - Initialization
     
-    init(client: TasoClient) {
+    init(client: TasoClientProtocol) {
         dataClient = client
     }
-    
     
     
     // MARK: - Add/remove delegates
@@ -59,26 +63,29 @@ class DataService {
     
     // MARK: - Methods
     
+    /**
+     * Get a club and filter selected categories from it. Notify delegates.
+     */
     @objc func populateCategories() {
-        dataClient.getClub()?
+        dataClient.getClub(club_id: Constants.Settings.selectedClubID)?
             .then { response -> Void in
                 log.debug("Status code: \(response.statusCode)")
                 if let data = response.data, let message = String(data: data, encoding: .utf8) {
                     log.debug("Message: \(message)")
-                    if let clubListing = ClubListing(JSONString: message), let club = clubListing.club {
+                    if let clubListing = TasoClubListing(JSONString: message), let club = clubListing.club {
                         log.debug("Got club: \(club.name ?? "")")
                         let categories = ClubFilter.getCategories(club: club,
                                                                    teams: Constants.Settings.selectedTeams,
                                                                    competitionsIncluding: Constants.Settings.selectedCompetitions)
                         self.delegates.forEach {$0.categoriesPopulated(categories: categories, error: nil)}
                     } else {
-                        self.delegates.forEach {$0.categoriesPopulated(categories: [Category](), error: DataServiceError.parseError("Problems parsing Taso response to a club"))}
+                        self.delegates.forEach {$0.categoriesPopulated(categories: [TasoCategory](), error: DataServiceError.parseError("Problems parsing Taso response to a club"))}
                     }
                 } else {
-                    self.delegates.forEach {$0.categoriesPopulated(categories: [Category](), error: DataServiceError.responseError("Problems with Taso response data"))}
+                    self.delegates.forEach {$0.categoriesPopulated(categories: [TasoCategory](), error: DataServiceError.responseError("Problems with Taso response data"))}
                 }
             }.catch { error in
-                self.delegates.forEach {$0.categoriesPopulated(categories: [Category](), error: DataServiceError.unknownError(error.localizedDescription))}
+                self.delegates.forEach {$0.categoriesPopulated(categories: [TasoCategory](), error: DataServiceError.unknownError(error.localizedDescription))}
         }
     }
 }

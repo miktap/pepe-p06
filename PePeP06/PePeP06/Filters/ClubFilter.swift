@@ -17,11 +17,11 @@ class ClubFilter {
      * contain one of the listed strings.
      * - Returns: A list of categories.
      */
-    static func getCategories(club: Club, teams: [String]? = nil, competitionsIncluding: [String]? = nil) -> [Category] {
+    static func getCategories(club: TasoClub, teams: [String]? = nil, competitionsIncluding: [String]? = nil) -> [TasoCategory] {
         log.debug("Filtering categories from club: \(club.name ?? "")")
         
         // Select teams
-        var selectedTeams: [Team]?
+        var selectedTeams: [TasoTeam]?
         if let teams = teams {
             log.debug("Including only teams: \(teams)")
             selectedTeams = club.teams?.filter {teams.contains($0.team_id)}
@@ -31,7 +31,7 @@ class ClubFilter {
         }
         
         // Select categories from teams
-        var selectedCategories = [Category]()
+        var selectedCategories = [TasoCategory]()
         if let selectedTeams = selectedTeams {
             if let competitionsIncluding = competitionsIncluding {
                 log.debug("Include only categories whose competitions contain one of: \(competitionsIncluding)")

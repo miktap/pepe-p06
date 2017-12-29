@@ -10,7 +10,7 @@ import UIKit
 class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Properties
     
-    var player: Player?
+    var player: TasoPlayer?
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var gamesLabel: UILabel!

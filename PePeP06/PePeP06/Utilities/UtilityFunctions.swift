@@ -45,7 +45,7 @@ func optionalArraysAreEqual<T: Equatable>(lhs: [T?]?, rhs: [T?]?) -> Bool {
  * - Parameter player: Current player
  * - Returns: Players fullname
  */
-func playerFullName(player: Player) -> String {
+func playerFullName(player: TasoPlayer) -> String {
     var result = ""
     if let firstName = player.first_name {
         result = firstName

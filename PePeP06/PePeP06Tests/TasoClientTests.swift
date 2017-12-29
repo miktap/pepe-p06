@@ -22,12 +22,12 @@ class TasoClientTests: QuickSpec {
             
             describe("getTeam") {
                 it("gets PePe team") {
-                    var teamListing: TeamListing?
+                    var teamListing: TasoTeamListing?
                     tasoClient.getTeam(team_id: "141460")!
                         .then { response -> Void in
                             let message = String(data: response.data!, encoding: .utf8)
                             log.debug(message!)
-                            teamListing = TeamListing(JSONString: message!)
+                            teamListing = TasoTeamListing(JSONString: message!)
                     }
                     
                     expect(teamListing?.team.team_name).toEventually(equal("PePe"), timeout: 3)
@@ -36,12 +36,12 @@ class TasoClientTests: QuickSpec {
             
             describe("getCompetitions") {
                 it("gets lsfs1718 competition") {
-                    var competitionListing: CompetitionListing?
+                    var competitionListing: TasoCompetitionListing?
                     tasoClient.getCompetitions()!
                         .then { response -> Void in
                             let message = String(data: response.data!, encoding: .utf8)
                             log.debug(message!)
-                            competitionListing = CompetitionListing(JSONString: message!)
+                            competitionListing = TasoCompetitionListing(JSONString: message!)
                     }
                     
                     expect(competitionListing?.competitions!).toEventually(containElementSatisfying({$0.competition_id == "lsfs1718"}), timeout: 3)
@@ -50,12 +50,12 @@ class TasoClientTests: QuickSpec {
             
             describe("getCategories") {
                 it("gets category FP12") {
-                    var categoryListing: CategoryListing?
+                    var categoryListing: TasoCategoryListing?
                     tasoClient.getCategories(competition_id: "lsfs1718")!
                         .then { response -> Void in
                             let message = String(data: response.data!, encoding: .utf8)
                             log.debug(message!)
-                            categoryListing = CategoryListing(JSONString: message!)
+                            categoryListing = TasoCategoryListing(JSONString: message!)
                     }
                     
                     expect(categoryListing?.categories).toEventually(containElementSatisfying({$0.category_id == "FP12"}), timeout: 3)
@@ -64,12 +64,12 @@ class TasoClientTests: QuickSpec {
             
             describe("getClub") {
                 it("gets club 3077") {
-                    var clubListing: ClubListing?
+                    var clubListing: TasoClubListing?
                     tasoClient.getClub()!
                         .then { response -> Void in
                             let message = String(data: response.data!, encoding: .utf8)
                             log.debug(message!)
-                            clubListing = ClubListing(JSONString: message!)
+                            clubListing = TasoClubListing(JSONString: message!)
                     }
                     
                     expect(clubListing?.club?.club_id).toEventually(equal("3077"), timeout: 3)
@@ -78,12 +78,12 @@ class TasoClientTests: QuickSpec {
             
             describe("getPlayer") {
                 it("gets player Jimi") {
-                    var playerListing: PlayerListing?
+                    var playerListing: TasoPlayerListing?
                     tasoClient.getPlayer(player_id: "290384")!
                         .then { response -> Void in
                             let message = String(data: response.data!, encoding: .utf8)
                             log.debug(message!)
-                            playerListing = PlayerListing(JSONString: message!)
+                            playerListing = TasoPlayerListing(JSONString: message!)
                     }
                     
                     expect(playerListing?.player?.first_name).toEventually(equal("Jimi"), timeout: 3)

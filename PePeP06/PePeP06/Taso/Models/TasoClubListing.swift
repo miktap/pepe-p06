@@ -1,28 +1,28 @@
 //
-//  PlayerListing.swift
+//  TasoClubListing.swift
 //  PePeP06
 //
-//  Created by Mikko Tapaninen on 27/12/2017.
+//  Created by Mikko Tapaninen on 26/12/2017.
 //
 
 import Foundation
 import ObjectMapper
 
-struct PlayerListing: Mappable {
+struct TasoClubListing: Mappable {
     // MARK: - Properties
     
-    var player: Player!
+    var club: TasoClub?
     
     
     // MARK: - Mappable
     
     init?(map: Map) {
-        if map.JSON["player"] == nil {
+        if map.JSON["club"] == nil {
             return nil
         }
     }
     
     mutating func mapping(map: Map) {
-        player <- map["player"]
+        club <- map["club"]
     }
 }

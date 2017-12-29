@@ -1,5 +1,5 @@
 //
-//  Category.swift
+//  TasoCategory.swift
 //  PePeP06
 //
 //  Created by Mikko Tapaninen on 26/12/2017.
@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-struct Category: Mappable {
+struct TasoCategory: Mappable {
     // MARK: - Properties
     
     var category_id: String?

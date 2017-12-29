@@ -24,11 +24,11 @@ protocol TasoClientProtocol {
      *
      * - Parameter current (Optional): Only list current competitions (1), not archived (0)
      * - Parameter season_id (Optional): Only list selected season (example 2018)
-     * - Parameter organizer (Optional): Only list selected organiser (example spl)
+     * - Parameter organiser (Optional): Only list selected organiser (example spl)
      * - Parameter region (Optional): Only list selected region (example spl)
      * - Returns: A promise of a `WebResponse`
      */
-    func getCompetitions(current: String?, season_id: String?, organizer: String?, region: String?) -> Promise<WebResponse>?
+    func getCompetitions(current: String?, season_id: String?, organiser: String?, region: String?) -> Promise<WebResponse>?
     
     /**
      * Get a list of all categories in a competition or all competitions with the category.
@@ -105,12 +105,12 @@ class TasoClient: WebClient, TasoClientProtocol {
         return invoke(webRequest: request)
     }
     
-    func getCompetitions(current: String? = nil, season_id: String? = nil, organizer: String? = nil, region: String? = nil) -> Promise<WebResponse>? {
+    func getCompetitions(current: String? = nil, season_id: String? = nil, organiser: String? = nil, region: String? = nil) -> Promise<WebResponse>? {
         var query = TasoQuery()
         query.queries = [
             URLQueryItem(name: "current", value: current),
             URLQueryItem(name: "season_id", value: season_id),
-            URLQueryItem(name: "organizer", value: organizer),
+            URLQueryItem(name: "organiser", value: organiser),
             URLQueryItem(name: "query", value: region)
         ]
 

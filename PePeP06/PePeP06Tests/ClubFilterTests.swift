@@ -13,13 +13,13 @@ import Nimble
 class ClubFilterTests: QuickSpec {
     override func spec() {
         describe("ClubFilter") {
-            var club: Club!
+            var club: TasoClub!
             beforeEach {
                 let bundle = Bundle(for: type(of: self))
                 let path = bundle.path(forResource: "Club", ofType: "json")!
                 let url = URL(fileURLWithPath: path)
                 let clubJSON = try! String(contentsOf: url, encoding: .utf8)
-                club = ClubListing(JSONString: clubJSON)!.club!
+                club = TasoClubListing(JSONString: clubJSON)!.club!
             }
             
             describe("getCategories") {
