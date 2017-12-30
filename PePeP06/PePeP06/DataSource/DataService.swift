@@ -75,7 +75,7 @@ class DataService {
     /**
      * Get a club and notify delegates.
      */
-    @objc func populateClub() {
+    func populateClub() {
         dataClient.getClub(club_id: Constants.Settings.selectedClubID)?
             .then { response -> Void in
                 log.debug("Status code: \(response.statusCode)")
@@ -109,7 +109,7 @@ class DataService {
      *
      * - Parameter team_ids (Optional): IDs of teams to get, defaults to selected teams
      */
-    @objc func populateTeams(team_ids: [String] = Constants.Settings.selectedTeams) {
+    func populateTeams(team_ids: [String] = Constants.Settings.selectedTeams) {
         var promises = [Promise<WebResponse>]()
         team_ids.forEach {
             if let promise = dataClient.getTeam(team_id: $0, competition_id: nil, category_id: nil) {

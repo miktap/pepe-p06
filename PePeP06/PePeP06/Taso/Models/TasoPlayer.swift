@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-struct TasoPlayer: Mappable {
+struct TasoPlayer: Mappable, Hashable {
     // MARK: - Properties
     
     var player_id: String!
@@ -20,7 +20,9 @@ struct TasoPlayer: Mappable {
     var assists: String?
     var warnings: String?
     var suspensions: String?
-    
+
+    var hashValue: Int {return player_id.hashValue}
+
     
     // MARK: - Mappable
     
@@ -40,5 +42,12 @@ struct TasoPlayer: Mappable {
         assists         <- map["assists"]
         warnings        <- map["warnings"]
         suspensions     <- map["suspensions"]
+    }
+    
+    
+    // MARK: - Equatable
+    
+    static func ==(lhs: TasoPlayer, rhs: TasoPlayer) -> Bool {
+        return lhs.player_id == rhs.player_id
     }
 }

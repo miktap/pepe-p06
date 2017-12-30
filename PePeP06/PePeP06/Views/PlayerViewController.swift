@@ -44,7 +44,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         
         // Pull-up refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(dataService, action: #selector(dataService.populateClub), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
         tableView.refreshControl = refreshControl
     }
     
@@ -112,6 +112,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - DataServiceDelegate
     
     func clubPopulated(club: TasoClub?, error: Error?) {
+        log.debug("Club populated")
         tableView.refreshControl?.endRefreshing()
         
         if let error = error {
@@ -129,6 +130,14 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     func teamsPopulated(teams: [TasoTeam]?, error: Error?) {
         
     }
+    
+
+    // MARK: - Private methods
+    
+    @objc private func update() {
+        dataService.populateTeams()
+    }
+
 }
 
 class PlayerInfoCell: UITableViewCell {

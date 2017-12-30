@@ -20,6 +20,7 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var dataService: DataService!
     var players = [TasoPlayer]() {
         didSet {
+            log.debug("Players updated, refresh UI")
             if let tableView = tableView {
                 tableView.reloadData()
             }
@@ -42,8 +43,18 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // Pull-up refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(dataService, action: #selector(dataService.populateTeams), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
         tableView.refreshControl = refreshControl
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        dataService.addDelegate(delegate: self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        dataService.removeDelegate(delegate: self)
     }
 
     
@@ -69,43 +80,30 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    // MARK: - Methods
-    
-    @objc func populatePlayers() {
-        let tasoClient = TasoClient()
-        tasoClient.getTeam(team_id: Constants.Taso.pepeFutsalID)?
-            .then { response -> Void in
-                log.debug("Status code: \(response.statusCode)")
-                if let data = response.data, let message = String(data: data, encoding: .utf8) {
-                    log.debug("Message: \(message)")
-                    if let teamListing = TasoTeamListing(JSONString: message) {
-                        log.debug("Got team: \(teamListing.team.team_name ?? "")")
-                        self.navigationItem.title = teamListing.team.team_name
-                        if let teamPlayers = teamListing.team.players {
-                            self.players = teamPlayers
-                        } else {
-                            log.warning("No players in the team")
-                        }
-                    } else {
-                        log.warning("Unable to parse team")
-                    }
-                }
-            }.always {
-                self.tableView.refreshControl?.endRefreshing()
-            } .catch { error in
-                // TODO: AlertDialog
-                log.error(error)
-        }
-    }
-    
-    
     // MARK: - DataServiceDelegate
     
     func clubPopulated(club: TasoClub?, error: Error?) {}
     
     func teamsPopulated(teams: [TasoTeam]?, error: Error?) {
+        log.debug("Teams populated")
+        tableView.refreshControl?.endRefreshing()
         
+        if let error = error {
+            log.error(error)
+            // TODO: error dialog
+        } else {
+            if let teams = teams {
+                var newPlayers = Set<TasoPlayer>()
+                teams.forEach {
+                    if let players = $0.players {
+                        newPlayers.formUnion(players)
+                    }
+                }
+                players = Array(newPlayers)
+            }
+        }
     }
+    
     
     // MARK: - Navigation
     
@@ -116,6 +114,13 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let cellIndex = tableView.indexPathForSelectedRow {
             vc.player = players[cellIndex.row]
         }
+    }
+    
+    
+    // MARK: - Private methods
+    
+    @objc private func update() {
+        dataService.populateTeams()
     }
 }
 
