@@ -34,13 +34,12 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = player?.first_name
         tableView.dataSource = self
         tableView.delegate = self
         
         dataService = AppDelegate.dataService
-        dataService.populateClub()
         
         // Pull-up refresh
         let refreshControl = UIRefreshControl()
@@ -51,13 +50,14 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
+        dataService.populateClub()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         dataService.removeDelegate(delegate: self)
     }
-
+    
     
     // MARK: - UITableViewDataSource
     
@@ -100,12 +100,12 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
         
-//        nameLabel.text      = playerFullName(player: player)
-//        gamesLabel.text     = player.matches
-//        goalsLabel.text     = player.goals
-//        passesLabel.text    = player.assists
-//        yellowsLabel.text   = player.warnings
-//        redsLabel.text      = player.suspensions
+        //        nameLabel.text      = playerFullName(player: player)
+        //        gamesLabel.text     = player.matches
+        //        goalsLabel.text     = player.goals
+        //        passesLabel.text    = player.assists
+        //        yellowsLabel.text   = player.warnings
+        //        redsLabel.text      = player.suspensions
     }
     
     
@@ -120,9 +120,11 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             // TODO: error dialog
         } else {
             if let club = club {
-                categoryList = TasoClubFilter.getCategories(club: club,
-                                                            teams: Constants.Settings.selectedTeams,
-                                                            competitionsIncluding: Constants.Settings.selectedCompetitions)
+                categoryList = TasoClubFilter.getCategories(
+                    club: club,
+                    teams: Constants.Settings.selectedTeams,
+                    competitionsIncluding: Constants.Settings.selectedCompetitions
+                )
             }
         }
     }
@@ -131,13 +133,13 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-
+    
     // MARK: - Private methods
     
     @objc private func update() {
         dataService.populateTeams()
     }
-
+    
 }
 
 class PlayerInfoCell: UITableViewCell {

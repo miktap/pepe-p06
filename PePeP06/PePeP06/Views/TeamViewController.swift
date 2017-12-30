@@ -39,7 +39,6 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         
         dataService = AppDelegate.dataService
-        dataService.populateTeams()
         
         // Pull-up refresh
         let refreshControl = UIRefreshControl()
@@ -50,6 +49,7 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
+        dataService.populateTeams()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

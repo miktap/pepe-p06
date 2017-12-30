@@ -40,8 +40,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
         tableView.delegate = self
         
         dataService = AppDelegate.dataService
-        dataService.populateClub()
-
+        
         // Pull-up refresh
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
@@ -51,6 +50,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
+        dataService.populateClub()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -84,7 +84,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
-
+    
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -103,9 +103,11 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
             // TODO: error dialog
         } else {
             if let club = club {
-                categoryList = TasoClubFilter.getCategories(club: club,
-                                                              teams: Constants.Settings.selectedTeams,
-                                                              competitionsIncluding: Constants.Settings.selectedCompetitions)
+                categoryList = TasoClubFilter.getCategories(
+                    club: club,
+                    teams: Constants.Settings.selectedTeams,
+                    competitionsIncluding: Constants.Settings.selectedCompetitions
+                )
             }
         }
     }
@@ -114,7 +116,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-
+    
     // MARK: - Private methods
     
     @objc private func update() {
