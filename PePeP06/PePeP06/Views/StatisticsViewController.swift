@@ -118,7 +118,7 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - Private methods
     
     @objc private func update() {
-        dataService.populateTeams()
+        dataService.populateClub()
     }
 }
 
