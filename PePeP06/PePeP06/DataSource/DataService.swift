@@ -12,12 +12,12 @@ protocol DataServiceDelegate {
     var id: String {get}
     
     /**
-     * Categories have been populated.
+     * Club has been populated.
      *
-     * - Parameter categories: Populated categories or nil in case of an error
+     * - Parameter club: Populated club or nil in case of an error
      * - Parameter error: Error or nil if operation was successfull
      */
-    func categoriesPopulated(categories: [TasoCategory]?, error: Error?)
+    func clubPopulated(club: TasoClub?, error: Error?)
     
     /**
      * Teams have been populated.
@@ -73,9 +73,9 @@ class DataService {
     // MARK: - Methods
     
     /**
-     * Get a club and filter selected categories from it. Notify delegates.
+     * Get a club and notify delegates.
      */
-    @objc func populateCategories() {
+    @objc func populateClub() {
         dataClient.getClub(club_id: Constants.Settings.selectedClubID)?
             .then { response -> Void in
                 log.debug("Status code: \(response.statusCode)")
@@ -83,27 +83,33 @@ class DataService {
                     log.debug("Message: \(message)")
                     if let clubListing = TasoClubListing(JSONString: message), let club = clubListing.club {
                         log.debug("Got club: \(club.name ?? "")")
-                        let categories = ClubFilter.getCategories(club: club,
-                                                                   teams: Constants.Settings.selectedTeams,
-                                                                   competitionsIncluding: Constants.Settings.selectedCompetitions)
-                        self.delegates.forEach {$0.categoriesPopulated(categories: categories, error: nil)}
+                        self.delegates.forEach {$0.clubPopulated(club: club, error: nil)}
                     } else {
-                        self.delegates.forEach {$0.categoriesPopulated(categories: nil, error: DataServiceError.parseError("Problems parsing Taso response to a club"))}
+                        self.delegates.forEach {
+                            $0.clubPopulated(club: nil,
+                                                   error: DataServiceError.parseError("Problems parsing Taso response to a club"))
+                        }
                     }
                 } else {
-                    self.delegates.forEach {$0.categoriesPopulated(categories: nil, error: DataServiceError.responseError("Problems with Taso response data"))}
+                    self.delegates.forEach {
+                        $0.clubPopulated(club: nil,
+                                               error: DataServiceError.responseError("Problems with Taso response data"))
+                    }
                 }
             }.catch { error in
-                self.delegates.forEach {$0.categoriesPopulated(categories: nil, error: DataServiceError.unknownError(error.localizedDescription))}
+                self.delegates.forEach {
+                    $0.clubPopulated(club: nil,
+                                           error: DataServiceError.unknownError(error.localizedDescription))
+                }
         }
     }
     
     /**
      * Get teams and notify delegates.
      *
-     * - Parameter team_ids: IDs of teams to get
+     * - Parameter team_ids (Optional): IDs of teams to get, defaults to selected teams
      */
-    func populateTeams(team_ids: [String]) {
+    @objc func populateTeams(team_ids: [String] = Constants.Settings.selectedTeams) {
         var promises = [Promise<WebResponse>]()
         team_ids.forEach {
             if let promise = dataClient.getTeam(team_id: $0, competition_id: nil, category_id: nil) {
@@ -129,12 +135,18 @@ class DataService {
                     }
                 }
                 if error {
-                    self.delegates.forEach {$0.teamsPopulated(teams: nil, error: DataServiceError.responseError("Problems with Taso response data"))}
+                    self.delegates.forEach {
+                        $0.teamsPopulated(teams: nil,
+                                          error: DataServiceError.responseError("Problems with Taso response data"))
+                    }
                 } else {
                     self.delegates.forEach {$0.teamsPopulated(teams: teams, error: nil)}
                 }
             }.catch { error in
-                self.delegates.forEach {$0.teamsPopulated(teams: nil, error: DataServiceError.unknownError(error.localizedDescription))}
+                self.delegates.forEach {
+                    $0.teamsPopulated(teams: nil,
+                                      error: DataServiceError.unknownError(error.localizedDescription))
+                }
         }
     }
 }

@@ -25,16 +25,16 @@ class DataServiceTests: QuickSpec {
                 dataService.addDelegate(delegate: mockDelegate)
             }
             
-            describe("populateCategories") {
+            describe("populateClub") {
                 context("when promise rejects") {
                     it("notifies delegates with an error") {
                         mockTasoClient.rejectPromise = true
                         
-                        dataService.populateCategories()
+                        dataService.populateClub()
                         
-                        expect(mockDelegate.categoriesPopulatedCalled).toEventually(beTrue())
-                        expect(mockDelegate.categoriesPopulatedCategories).toEventually(beNil())
-                        expect(mockDelegate.categoriesPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
+                        expect(mockDelegate.clubPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.clubPopulatedClub).toEventually(beNil())
+                        expect(mockDelegate.clubPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
                     }
                 }
                 
@@ -42,11 +42,11 @@ class DataServiceTests: QuickSpec {
                     it("notifies delegates with an error") {
                         mockTasoClient.webResponse = WebResponse(data: nil, statusCode: 200)
                         
-                        dataService.populateCategories()
+                        dataService.populateClub()
                         
-                        expect(mockDelegate.categoriesPopulatedCalled).toEventually(beTrue())
-                        expect(mockDelegate.categoriesPopulatedCategories).toEventually(beNil())
-                        expect(mockDelegate.categoriesPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
+                        expect(mockDelegate.clubPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.clubPopulatedClub).toEventually(beNil())
+                        expect(mockDelegate.clubPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
                     }
                 }
                 
@@ -63,11 +63,11 @@ class DataServiceTests: QuickSpec {
 """
                         mockTasoClient.webResponse = WebResponse(data: json.data(using: .utf8)!, statusCode: 200)
                         
-                        dataService.populateCategories()
+                        dataService.populateClub()
                         
-                        expect(mockDelegate.categoriesPopulatedCalled).toEventually(beTrue())
-                        expect(mockDelegate.categoriesPopulatedCategories).toEventually(beNil())
-                        expect(mockDelegate.categoriesPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
+                        expect(mockDelegate.clubPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.clubPopulatedClub).toEventually(beNil())
+                        expect(mockDelegate.clubPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
                     }
                 }
                 
@@ -79,11 +79,11 @@ class DataServiceTests: QuickSpec {
                         let clubJSON = try! String(contentsOf: url, encoding: .utf8)
                         mockTasoClient.webResponse = WebResponse(data: clubJSON.data(using: .utf8)!, statusCode: 200)
                         
-                        dataService.populateCategories()
+                        dataService.populateClub()
                         
-                        expect(mockDelegate.categoriesPopulatedCalled).toEventually(beTrue())
-                        expect(mockDelegate.categoriesPopulatedCategories?.count).toEventually(equal(3))
-                        expect(mockDelegate.categoriesPopulatedError).toEventually(beNil())
+                        expect(mockDelegate.clubPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.clubPopulatedClub?.club_id).toEventually(equal("3077"))
+                        expect(mockDelegate.clubPopulatedError).toEventually(beNil())
                     }
                 }
             }
@@ -156,18 +156,18 @@ class DataServiceTests: QuickSpec {
 class MockDataServiceDelegate: DataServiceDelegate {
     var id: String = "MockDataServiceDelegate"
     
-    var categoriesPopulatedCalled = false
-    var categoriesPopulatedCategories: [TasoCategory]?
-    var categoriesPopulatedError: Error?
+    var clubPopulatedCalled = false
+    var clubPopulatedClub: TasoClub?
+    var clubPopulatedError: Error?
     
     var teamsPopulatedCalled = false
     var teamsPopulatedTeams: [TasoTeam]?
     var teamsPopulatedError: Error?
     
-    func categoriesPopulated(categories: [TasoCategory]?, error: Error?) {
-        categoriesPopulatedCalled = true
-        categoriesPopulatedCategories = categories
-        categoriesPopulatedError = error
+    func clubPopulated(club: TasoClub?, error: Error?) {
+        clubPopulatedCalled = true
+        clubPopulatedClub = club
+        clubPopulatedError = error
     }
     
     func teamsPopulated(teams: [TasoTeam]?, error: Error?) {

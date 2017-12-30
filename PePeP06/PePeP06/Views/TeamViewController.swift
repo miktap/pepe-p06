@@ -13,9 +13,11 @@ class PlayerTableViewCell: UITableViewCell {
     @IBOutlet weak var playerName: UILabel!
 }
 
-class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataServiceDelegate {
     // MARK: - Properties
     
+    var id = "TeamViewController"
+    var dataService: DataService!
     var players = [TasoPlayer]() {
         didSet {
             if let tableView = tableView {
@@ -23,7 +25,6 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
-    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -36,12 +37,13 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         
+        dataService = AppDelegate.dataService
+        dataService.populateTeams()
+        
         // Pull-up refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(populatePlayers), for: .valueChanged)
+        refreshControl.addTarget(dataService, action: #selector(dataService.populateTeams), for: .valueChanged)
         tableView.refreshControl = refreshControl
-        
-        populatePlayers()
     }
 
     
@@ -96,6 +98,14 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    
+    // MARK: - DataServiceDelegate
+    
+    func clubPopulated(club: TasoClub?, error: Error?) {}
+    
+    func teamsPopulated(teams: [TasoTeam]?, error: Error?) {
+        
+    }
     
     // MARK: - Navigation
     

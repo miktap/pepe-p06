@@ -40,14 +40,12 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         
         dataService = AppDelegate.dataService
-        dataService.populateCategories()
+        dataService.populateClub()
         
         // Pull-up refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(dataService, action: #selector(dataService.populateCategories), for: .valueChanged)
+        refreshControl.addTarget(dataService, action: #selector(dataService.populateClub), for: .valueChanged)
         tableView.refreshControl = refreshControl
-
-        //updateStats()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,14 +111,17 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: - DataServiceDelegate
     
-    func categoriesPopulated(categories: [TasoCategory]?, error: Error?) {
+    func clubPopulated(club: TasoClub?, error: Error?) {
         tableView.refreshControl?.endRefreshing()
+        
         if let error = error {
             log.error(error)
             // TODO: error dialog
         } else {
-            if let categories = categories {
-                categoryList = categories
+            if let club = club {
+                categoryList = TasoClubFilter.getCategories(club: club,
+                                                            teams: Constants.Settings.selectedTeams,
+                                                            competitionsIncluding: Constants.Settings.selectedCompetitions)
             }
         }
     }

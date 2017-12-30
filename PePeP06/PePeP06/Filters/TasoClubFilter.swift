@@ -1,5 +1,5 @@
 //
-//  TasoObjectListFilter.swift
+//  TasoClubFilter.swift
 //  PePeP06
 //
 //  Created by Mikko Tapaninen on 26/12/2017.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class ClubFilter {
+class TasoClubFilter {
     /**
-     * Get categories from a club.
+     * Get categories from a Taso club.
      *
      * - Parameter club: Club to filter.
      * - Parameter teams (Optional): Team IDs which are included in the filter.

@@ -21,7 +21,7 @@
 		C353B5E01FF2498600526AD3 /* TasoClubListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5DF1FF2498600526AD3 /* TasoClubListing.swift */; };
 		C353B5E21FF24AE100526AD3 /* TasoCategoryListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5E11FF24AE100526AD3 /* TasoCategoryListing.swift */; };
 		C353B5E41FF2796B00526AD3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5E31FF2796B00526AD3 /* Constants.swift */; };
-		C353B5E61FF293D800526AD3 /* ClubFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5E51FF293D800526AD3 /* ClubFilter.swift */; };
+		C353B5E61FF293D800526AD3 /* TasoClubFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5E51FF293D800526AD3 /* TasoClubFilter.swift */; };
 		C353B5E91FF2DD1B00526AD3 /* ClubFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5E81FF2DD1B00526AD3 /* ClubFilterTests.swift */; };
 		C353B5EC1FF2DDF300526AD3 /* Club.json in Resources */ = {isa = PBXBuildFile; fileRef = C353B5EB1FF2DDF300526AD3 /* Club.json */; };
 		C353B5F51FF400EF00526AD3 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F21FF400EF00526AD3 /* PlayerViewController.swift */; };
@@ -74,7 +74,7 @@
 		C353B5DF1FF2498600526AD3 /* TasoClubListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClubListing.swift; sourceTree = "<group>"; };
 		C353B5E11FF24AE100526AD3 /* TasoCategoryListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoCategoryListing.swift; sourceTree = "<group>"; };
 		C353B5E31FF2796B00526AD3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C353B5E51FF293D800526AD3 /* ClubFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubFilter.swift; sourceTree = "<group>"; };
+		C353B5E51FF293D800526AD3 /* TasoClubFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClubFilter.swift; sourceTree = "<group>"; };
 		C353B5E81FF2DD1B00526AD3 /* ClubFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubFilterTests.swift; sourceTree = "<group>"; };
 		C353B5EB1FF2DDF300526AD3 /* Club.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Club.json; sourceTree = "<group>"; };
 		C353B5F21FF400EF00526AD3 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		C353B5E71FF294F300526AD3 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				C353B5E51FF293D800526AD3 /* ClubFilter.swift */,
+				C353B5E51FF293D800526AD3 /* TasoClubFilter.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -503,7 +503,7 @@
 				C353B5F61FF400EF00526AD3 /* StatisticsViewController.swift in Sources */,
 				C3714E301FEFA3B200A913C1 /* TasoTeam.swift in Sources */,
 				C353B5F71FF400EF00526AD3 /* TeamViewController.swift in Sources */,
-				C353B5E61FF293D800526AD3 /* ClubFilter.swift in Sources */,
+				C353B5E61FF293D800526AD3 /* TasoClubFilter.swift in Sources */,
 				C3714E2E1FEFA1D300A913C1 /* TasoPlayer.swift in Sources */,
 				C3714E351FF00DAE00A913C1 /* TasoTeamListing.swift in Sources */,
 				C353B5DC1FF2447500526AD3 /* TasoCategory.swift in Sources */,
