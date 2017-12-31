@@ -47,6 +47,34 @@ class ClubFilterTests: QuickSpec {
                     }
                 }
             }
+            
+            describe("getTeamsAndCategories") {
+                context("when club contains no matching teams") {
+                    it("returns empty") {
+                        let result = TasoClubFilter.getTeamsAndCategories(club: club, teams: ["1","2"], competitionsIncluding: Constants.Settings.selectedCompetitions)
+                        
+                        expect(result).to(beEmpty())
+                    }
+                }
+                
+                context("when club contains matching teams but no matching categories") {
+                    it("returns only teams") {
+                        let result = TasoClubFilter.getTeamsAndCategories(club: club, teams: Constants.Settings.selectedTeams, competitionsIncluding: ["huuhaa"])
+                        
+                        expect(result.keys.count).to(equal(2))
+                        result.keys.forEach {expect(result[$0]!).to(beEmpty())}
+                    }
+                }
+                
+                context("when club contains matching teams and matching categories") {
+                    it("returns teams with categories") {
+                        let result = TasoClubFilter.getTeamsAndCategories(club: club)
+                        
+                        expect(result.keys.count).to(equal(2))
+                        expect(result.values.flatMap{$0}.count).to(equal(3))
+                    }
+                }
+            }
         }
     }
 }

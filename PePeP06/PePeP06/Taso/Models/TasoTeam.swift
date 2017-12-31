@@ -8,13 +8,15 @@
 import Foundation
 import ObjectMapper
 
-struct TasoTeam: Mappable {
+struct TasoTeam: Mappable, Hashable {
     // MARK: - Properties
     
     var team_id: String!
     var team_name: String?
     var players: [TasoPlayer]?
     var categories: [TasoCategory]?
+    
+    var hashValue: Int {return team_id.hashValue}
     
     
     // MARK: - Mappable
@@ -30,5 +32,12 @@ struct TasoTeam: Mappable {
         team_name   <- map["team_name"]
         players     <- map["players"]
         categories  <- map["categories"]
+    }
+    
+    
+    // MARK: - Equatable
+    
+    static func ==(lhs: TasoTeam, rhs: TasoTeam) -> Bool {
+        return lhs.team_id == rhs.team_id
     }
 }

@@ -21,6 +21,14 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var players = [TasoPlayer]() {
         didSet {
             log.debug("Players updated, refresh UI")
+            players.sort(by: {
+                if let shirt1 = $0.shirt_number, let shirt2 = $1.shirt_number,
+                    let number1 = Int(shirt1), let number2 = Int(shirt2) {
+                    return number1 < number2
+                } else {
+                    return false
+                }
+            })
             if let tableView = tableView {
                 tableView.reloadData()
             }

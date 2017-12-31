@@ -11,8 +11,13 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - Properties
     
     var id = "PlayerViewController"
-    var player: TasoPlayer?
     var dataService: DataService!
+    var player: TasoPlayer?
+    var teamCategories = [TasoTeam: [TasoCategory]]() {
+        didSet {
+            categoryList = teamCategories.values.flatMap {$0}
+        }
+    }
     var categoryList = [TasoCategory]() {
         didSet {
             if currentCategory == nil {
@@ -27,6 +32,10 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             tableView.reloadData()
         }
     }
+    /// Indicates whether a club fetch request is ongoing
+    var fetchingClub = false
+    /// Indicates whether teams fetch request is ongoing
+    var fetchingTeams = false
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -51,6 +60,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
         dataService.populateClub()
+        dataService.populateTeams()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -113,30 +123,43 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     func clubPopulated(club: TasoClub?, error: Error?) {
         log.debug("Club populated")
-        tableView.refreshControl?.endRefreshing()
+        if !fetchingClub && !fetchingTeams {
+            tableView.refreshControl?.endRefreshing()
+        }
         
         if let error = error {
             log.error(error)
             // TODO: error dialog
         } else {
             if let club = club {
-                categoryList = TasoClubFilter.getCategories(
-                    club: club,
-                    teams: Constants.Settings.selectedTeams,
-                    competitionsIncluding: Constants.Settings.selectedCompetitions
-                )
+                
             }
         }
     }
     
     func teamsPopulated(teams: [TasoTeam]?, error: Error?) {
+        log.debug("Teams populated")
+        if !fetchingClub && !fetchingTeams {
+            tableView.refreshControl?.endRefreshing()
+        }
         
+        if let error = error {
+            log.error(error)
+            // TODO: error dialog
+        } else {
+            if let teams = teams {
+                
+            }
+        }
     }
     
     
     // MARK: - Private methods
     
     @objc private func update() {
+        fetchingClub = true
+        fetchingTeams = true
+        dataService.populateClub()
         dataService.populateTeams()
     }
     

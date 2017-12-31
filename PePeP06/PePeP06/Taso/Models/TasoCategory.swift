@@ -11,7 +11,7 @@ import ObjectMapper
 struct TasoCategory: Mappable {
     // MARK: - Properties
     
-    var category_id: String?
+    var category_id: String!
     var category_name: String?
     var category_team_name: String?
     var competition_id: String?
