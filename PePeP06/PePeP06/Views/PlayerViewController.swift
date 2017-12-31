@@ -15,6 +15,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     var player: TasoPlayer?
     var teamCategories = [TasoTeam: [TasoCategory]]() {
         didSet {
+            log.debug("Teams and categories defined")
             categoryList = teamCategories.values.flatMap {$0}
         }
     }
@@ -132,7 +133,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             // TODO: error dialog
         } else {
             if let club = club {
-                
+                teamCategories = TasoClubFilter.getTeamsAndCategories(club: club)
             }
         }
     }
@@ -151,6 +152,10 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
                 
             }
         }
+    }
+    
+    func teamWithCategoryPopulated(team: TasoTeam?, error: Error?) {
+        
     }
     
     

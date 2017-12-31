@@ -26,6 +26,14 @@ protocol DataServiceDelegate {
      * - Parameter error: Error or nil if operation was successfull
      */
     func teamsPopulated(teams: [TasoTeam]?, error: Error?)
+    
+    /**
+     * Team with a specified category has been populated.
+     *
+     * - Parameter team: Populated team or nil in case of an error
+     * - Parameter error: Error or nil if operation was successfull
+     */
+    func teamWithCategoryPopulated(team: TasoTeam?, error: Error?)
 }
 
 enum DataServiceError: Error {
@@ -87,19 +95,19 @@ class DataService {
                     } else {
                         self.delegates.forEach {
                             $0.clubPopulated(club: nil,
-                                                   error: DataServiceError.parseError("Problems parsing Taso response to a club"))
+                                             error: DataServiceError.parseError("Problems parsing Taso response to a club"))
                         }
                     }
                 } else {
                     self.delegates.forEach {
                         $0.clubPopulated(club: nil,
-                                               error: DataServiceError.responseError("Problems with Taso response data"))
+                                         error: DataServiceError.responseError("Problems with Taso response data"))
                     }
                 }
             }.catch { error in
                 self.delegates.forEach {
                     $0.clubPopulated(club: nil,
-                                           error: DataServiceError.unknownError(error.localizedDescription))
+                                     error: DataServiceError.unknownError(error.localizedDescription))
                 }
         }
     }
@@ -146,6 +154,40 @@ class DataService {
                 self.delegates.forEach {
                     $0.teamsPopulated(teams: nil,
                                       error: DataServiceError.unknownError(error.localizedDescription))
+                }
+        }
+    }
+    
+    /**
+     * Get a team with a specified category.
+     *
+     * - Parameter name team_id: Team ID
+     * - Parameter name category_id: Category ID
+     */
+    func populateTeamWithCategory(team_id: String, category_id: String) {
+        dataClient.getTeam(team_id: team_id, competition_id: nil, category_id: category_id)?
+            .then { response -> Void in
+                if let data = response.data, let message = String(data: data, encoding: .utf8) {
+                    log.debug("Message: \(message)")
+                    if let teamListing = TasoTeamListing(JSONString: message), let team = teamListing.team {
+                        log.debug("Got team: \(team.team_name ?? "")")
+                        self.delegates.forEach {$0.teamWithCategoryPopulated(team: team, error: nil)}
+                    } else {
+                        self.delegates.forEach {
+                            $0.teamWithCategoryPopulated(team: nil,
+                                                         error: DataServiceError.parseError("Problems parsing Taso response to a team"))
+                        }
+                    }
+                } else {
+                    self.delegates.forEach {
+                        $0.teamWithCategoryPopulated(team: nil,
+                                                     error: DataServiceError.responseError("Problems with Taso response data"))
+                    }
+                }
+            }.catch { error in
+                self.delegates.forEach {
+                    $0.teamWithCategoryPopulated(team: nil,
+                                                 error: DataServiceError.unknownError(error.localizedDescription))
                 }
         }
     }

@@ -149,6 +149,68 @@ class DataServiceTests: QuickSpec {
                     }
                 }
             }
+            
+            describe("populateTeamWithCategory") {
+                context("when promise rejects") {
+                    it("notifies delegates with an error") {
+                        mockTasoClient.rejectPromise = true
+                        
+                        dataService.populateTeamWithCategory(team_id: "1", category_id: "2")
+                        
+                        expect(mockDelegate.teamWithCategoryPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.teamWithCategoryPopulatedTeam).toEventually(beNil())
+                        expect(mockDelegate.teamWithCategoryPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
+                    }
+                }
+                
+                context("when response has no data") {
+                    it("notifies delegates with an error") {
+                        mockTasoClient.webResponse = WebResponse(data: nil, statusCode: 200)
+                        
+                        dataService.populateTeamWithCategory(team_id: "1", category_id: "2")
+                        
+                        expect(mockDelegate.teamWithCategoryPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.teamWithCategoryPopulatedTeam).toEventually(beNil())
+                        expect(mockDelegate.teamWithCategoryPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
+                    }
+                }
+                
+                context("when response cannot be parsed to 'TeamListing'") {
+                    it("notifies delegates with an error") {
+                        let json = """
+{
+    "team": {
+        "team_name": "pepe"
+    }
+}
+
+"""
+                        mockTasoClient.webResponse = WebResponse(data: json.data(using: .utf8)!, statusCode: 200)
+                        
+                        dataService.populateTeamWithCategory(team_id: "1", category_id: "2")
+                        
+                        expect(mockDelegate.teamWithCategoryPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.teamWithCategoryPopulatedTeam).toEventually(beNil())
+                        expect(mockDelegate.teamWithCategoryPopulatedError).toEventually(beAnInstanceOf(DataServiceError.self))
+                    }
+                }
+                
+                context("when response is valid") {
+                    it("notifies delegates with team") {
+                        let bundle = Bundle(for: type(of: self))
+                        let path = bundle.path(forResource: "Team", ofType: "json")!
+                        let url = URL(fileURLWithPath: path)
+                        let teamJSON = try! String(contentsOf: url, encoding: .utf8)
+                        mockTasoClient.webResponse = WebResponse(data: teamJSON.data(using: .utf8)!, statusCode: 200)
+                        
+                        dataService.populateTeamWithCategory(team_id: "1", category_id: "2")
+                        
+                        expect(mockDelegate.teamWithCategoryPopulatedCalled).toEventually(beTrue())
+                        expect(mockDelegate.teamWithCategoryPopulatedTeam?.team_id).toEventually(equal("141460"))
+                        expect(mockDelegate.teamWithCategoryPopulatedError).toEventually(beNil())
+                    }
+                }
+            }
         }
     }
 }
@@ -164,6 +226,10 @@ class MockDataServiceDelegate: DataServiceDelegate {
     var teamsPopulatedTeams: [TasoTeam]?
     var teamsPopulatedError: Error?
     
+    var teamWithCategoryPopulatedCalled = false
+    var teamWithCategoryPopulatedTeam: TasoTeam?
+    var teamWithCategoryPopulatedError: Error?
+    
     func clubPopulated(club: TasoClub?, error: Error?) {
         clubPopulatedCalled = true
         clubPopulatedClub = club
@@ -174,6 +240,12 @@ class MockDataServiceDelegate: DataServiceDelegate {
         teamsPopulatedCalled = true
         teamsPopulatedTeams = teams
         teamsPopulatedError = error
+    }
+    
+    func teamWithCategoryPopulated(team: TasoTeam?, error: Error?) {
+        teamWithCategoryPopulatedCalled = true
+        teamWithCategoryPopulatedTeam = team
+        teamWithCategoryPopulatedError = error
     }
 }
 

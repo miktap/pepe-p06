@@ -112,9 +112,8 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func teamsPopulated(teams: [TasoTeam]?, error: Error?) {
-        
-    }
+    func teamsPopulated(teams: [TasoTeam]?, error: Error?) {}
+    func teamWithCategoryPopulated(team: TasoTeam?, error: Error?) {}
     
     
     // MARK: - Private methods

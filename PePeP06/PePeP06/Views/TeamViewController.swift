@@ -112,6 +112,8 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func teamWithCategoryPopulated(team: TasoTeam?, error: Error?) {}
+    
     
     // MARK: - Navigation
     
