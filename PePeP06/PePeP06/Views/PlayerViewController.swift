@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataServiceDelegate {
+class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataServiceDelegate, CategorySelectionProtocol {
     // MARK: - Properties
     
     var id = "PlayerViewController"
@@ -29,12 +29,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     }
     var currentCategory: TasoCategory? {
         didSet {
-            log.debug("Category changed to \(currentCategory?.category_name ?? ""), time to change statistics view")
-            if let team = teamCategories.first(where: {$0.value.contains(currentCategory!)}) {
-                log.debug("Category is included to team: \(team.key.team_name ?? ""), get team")
-                dataService.populateTeamWithCategory(team_id: team.key.team_id, category_id: currentCategory!.category_id)
-            }
             tableView.reloadData()
+            getPlayerStats()
         }
     }
     @IBOutlet weak var tableView: UITableView!
@@ -61,6 +57,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
         dataService.populateClub()
+        getPlayerStats()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -138,6 +135,26 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     func teamWithCategoryPopulated(team: TasoTeam?, error: Error?) {
         log.debug("Team with category populated")
+        tableView.reloadData()
+    }
+    
+    
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? CategorySelectionViewController {
+            vc.delegate = self
+            vc.categories = categoryList
+            vc.currentCategory = currentCategory
+        }
+    }
+    
+    
+    // MARK: - CategorySelectionProtocol
+    
+    func categorySelected(category: TasoCategory) {
+        currentCategory = category
     }
     
     
@@ -147,6 +164,18 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         dataService.populateClub()
     }
     
+    private func getPlayerStats() {
+        guard let currentCategory = currentCategory else {
+            log.debug("Current category not set")
+            return
+        }
+        
+        log.debug("Category changed to \(currentCategory), find out into which team this category belongs")
+        if let team = teamCategories.first(where: {$0.value.contains(currentCategory)}) {
+            log.debug("Category is included to team: \(team.key), get team")
+            dataService.populateTeamWithCategory(team_id: team.key.team_id, category_id: currentCategory.category_id)
+        }
+    }
 }
 
 class PlayerInfoCell: UITableViewCell {

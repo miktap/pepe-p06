@@ -12,6 +12,7 @@
 		C33431951FF5644D0050818C /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33431941FF5644D0050818C /* DataServiceTests.swift */; };
 		C33431971FF568D10050818C /* MockTasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33431961FF568D10050818C /* MockTasoClient.swift */; };
 		C33431991FF6C4C70050818C /* Team.json in Resources */ = {isa = PBXBuildFile; fileRef = C33431981FF6C4C70050818C /* Team.json */; };
+		C334319B1FF8FC490050818C /* CategorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C334319A1FF8FC490050818C /* CategorySelectionViewController.swift */; };
 		C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD31EABB340009AED76 /* AppDelegate.swift */; };
 		C3343ADB1EABB340009AED76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343AD91EABB340009AED76 /* Main.storyboard */; };
 		C3343ADD1EABB340009AED76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADC1EABB340009AED76 /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 		C33431941FF5644D0050818C /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
 		C33431961FF568D10050818C /* MockTasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTasoClient.swift; sourceTree = "<group>"; };
 		C33431981FF6C4C70050818C /* Team.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Team.json; sourceTree = "<group>"; };
+		C334319A1FF8FC490050818C /* CategorySelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionViewController.swift; sourceTree = "<group>"; };
 		C3343AD01EABB340009AED76 /* PePeP06.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PePeP06.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3343AD31EABB340009AED76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3343ADA1EABB340009AED76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		C353B5F11FF400E200526AD3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C334319A1FF8FC490050818C /* CategorySelectionViewController.swift */,
 				C353B5F21FF400EF00526AD3 /* PlayerViewController.swift */,
 				C353B5F31FF400EF00526AD3 /* StatisticsViewController.swift */,
 				C353B5F41FF400EF00526AD3 /* TeamViewController.swift */,
@@ -508,6 +511,7 @@
 				C3714E351FF00DAE00A913C1 /* TasoTeamListing.swift in Sources */,
 				C353B5DC1FF2447500526AD3 /* TasoCategory.swift in Sources */,
 				C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */,
+				C334319B1FF8FC490050818C /* CategorySelectionViewController.swift in Sources */,
 				C353B5FC1FF41AE700526AD3 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
