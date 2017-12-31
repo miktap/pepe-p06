@@ -8,13 +8,15 @@
 import Foundation
 import ObjectMapper
 
-struct TasoClub: Mappable {
+struct TasoClub: Mappable, CustomStringConvertible {
     // MARK: - Properties
     
     var club_id: String!
     var name: String?
     var abbreviation: String?
     var teams: [TasoTeam]?
+    
+    var description: String {return "\(club_id!)/\(name ?? "")"}
     
     
     // MARK: - Mappable

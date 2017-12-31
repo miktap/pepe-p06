@@ -133,7 +133,7 @@ class DataService {
                     if let data = response.data, let message = String(data: data, encoding: .utf8) {
                         log.debug("Message: \(message)")
                         if let teamListing = TasoTeamListing(JSONString: message), let team = teamListing.team {
-                            log.debug("Got team: \(team.team_name ?? "")")
+                            log.debug("Got team: \(team)")
                             teams.append(team)
                         } else {
                             error = true
@@ -170,7 +170,7 @@ class DataService {
                 if let data = response.data, let message = String(data: data, encoding: .utf8) {
                     log.debug("Message: \(message)")
                     if let teamListing = TasoTeamListing(JSONString: message), let team = teamListing.team {
-                        log.debug("Got team: \(team.team_name ?? "")")
+                        log.debug("Got team: \(team)")
                         self.delegates.forEach {$0.teamWithCategoryPopulated(team: team, error: nil)}
                     } else {
                         self.delegates.forEach {

@@ -100,7 +100,13 @@ class TasoClient: WebClient, TasoClientProtocol {
     // MARK: - TasoClientProtocol
     
     func getTeam(team_id: String, competition_id: String? = nil, category_id: String? = nil) -> Promise<WebResponse>? {
-        let query = TasoQuery(queries: [URLQueryItem(name:"team_id", value: team_id)])
+        var query = TasoQuery()
+        query.queries = [
+            URLQueryItem(name: "team_id", value: team_id),
+            URLQueryItem(name: "competition_id", value: competition_id),
+            URLQueryItem(name: "category_id", value: category_id)
+        ]
+
         let request = WebRequest(url: tasoUrl + "getTeam", method: "GET", queryParams: query.output, headers: nil, body: nil)
         return invoke(webRequest: request)
     }

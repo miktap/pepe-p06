@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-struct TasoCategory: Mappable {
+struct TasoCategory: Mappable, Hashable, CustomStringConvertible {
     // MARK: - Properties
     
     var category_id: String!
@@ -18,6 +18,9 @@ struct TasoCategory: Mappable {
     var competition_name: String?
     var competition_season: String?
     var competition_active: String?
+    
+    var hashValue: Int {return category_id.hashValue}
+    var description: String {return "\(category_id!)/\(category_name ?? "")"}
     
     
     // MARK: - Mappable
@@ -36,5 +39,12 @@ struct TasoCategory: Mappable {
         competition_name    <- map["competition_name"]
         competition_season  <- map["competition_season"]
         competition_active  <- map["competition_active"]
+    }
+    
+    
+    // MARK: - Equatable
+    
+    static func ==(lhs: TasoCategory, rhs: TasoCategory) -> Bool {
+        return lhs.category_id == rhs.category_id
     }
 }

@@ -30,13 +30,13 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     var currentCategory: TasoCategory? {
         didSet {
             log.debug("Category changed to \(currentCategory?.category_name ?? ""), time to change statistics view")
+            if let team = teamCategories.first(where: {$0.value.contains(currentCategory!)}) {
+                log.debug("Category is included to team: \(team.key.team_name ?? ""), get team")
+                dataService.populateTeamWithCategory(team_id: team.key.team_id, category_id: currentCategory!.category_id)
+            }
             tableView.reloadData()
         }
     }
-    /// Indicates whether a club fetch request is ongoing
-    var fetchingClub = false
-    /// Indicates whether teams fetch request is ongoing
-    var fetchingTeams = false
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -61,7 +61,6 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
         dataService.populateClub()
-        dataService.populateTeams()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -124,9 +123,6 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     func clubPopulated(club: TasoClub?, error: Error?) {
         log.debug("Club populated")
-        if !fetchingClub && !fetchingTeams {
-            tableView.refreshControl?.endRefreshing()
-        }
         
         if let error = error {
             log.error(error)
@@ -138,34 +134,17 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    func teamsPopulated(teams: [TasoTeam]?, error: Error?) {
-        log.debug("Teams populated")
-        if !fetchingClub && !fetchingTeams {
-            tableView.refreshControl?.endRefreshing()
-        }
-        
-        if let error = error {
-            log.error(error)
-            // TODO: error dialog
-        } else {
-            if let teams = teams {
-                
-            }
-        }
-    }
+    func teamsPopulated(teams: [TasoTeam]?, error: Error?) {}
     
     func teamWithCategoryPopulated(team: TasoTeam?, error: Error?) {
-        
+        log.debug("Team with category populated")
     }
     
     
     // MARK: - Private methods
     
     @objc private func update() {
-        fetchingClub = true
-        fetchingTeams = true
         dataService.populateClub()
-        dataService.populateTeams()
     }
     
 }

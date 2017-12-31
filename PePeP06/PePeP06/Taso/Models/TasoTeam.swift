@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-struct TasoTeam: Mappable, Hashable {
+struct TasoTeam: Mappable, Hashable, CustomStringConvertible {
     // MARK: - Properties
     
     var team_id: String!
@@ -17,7 +17,8 @@ struct TasoTeam: Mappable, Hashable {
     var categories: [TasoCategory]?
     
     var hashValue: Int {return team_id.hashValue}
-    
+    var description: String {return "\(team_id!)/\(team_name ?? "")"}
+
     
     // MARK: - Mappable
     

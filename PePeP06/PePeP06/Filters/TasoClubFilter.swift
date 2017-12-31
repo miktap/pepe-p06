@@ -40,7 +40,7 @@ class TasoClubFilter {
                         competitionsIncluding.forEach { competitionString in
                             if let competition = category.competition_name,
                                 competition.contains(competitionString) {
-                                log.debug("Found a category '\(category.category_id)' with a competition match '\(competitionString)'")
+                                log.debug("Found a category '\(category)' with a competition match '\(competitionString)'")
                                 selectedCategories.append(category)
                                 return
                             }
@@ -87,7 +87,7 @@ class TasoClubFilter {
                         if let competition = category.competition_name {
                             for competitionFilter in competitionsIncluding {
                                 if competition.contains(competitionFilter) {
-                                    log.debug("Found category: \(category.category_id)")
+                                    log.debug("Found category: \(category)")
                                     return true
                                 }
                             }
