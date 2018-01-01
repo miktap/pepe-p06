@@ -89,6 +89,20 @@ class TasoClientTests: QuickSpec {
                     expect(playerListing?.player?.first_name).toEventually(equal("Jimi"), timeout: 3)
                 }
             }
+            
+            describe("getGroup") {
+                it("") {
+                    var groupListing: TasoGroupListing?
+                    tasoClient.getGroup(competition_id: "lsfs1718", category_id: "FP12", group_id: "1")!
+                        .then { response -> Void in
+                            let message = String(data: response.data!, encoding: .utf8)
+                            log.debug(message!)
+                            groupListing = TasoGroupListing(JSONString: message!)
+                    }
+                    
+                    expect(groupListing?.group?.player_statistics).toNotEventually(beNil(), timeout: 3)
+                }
+            }
         }
     }
 }

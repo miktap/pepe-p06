@@ -12,6 +12,7 @@ struct TasoPlayer: Mappable, Hashable {
     // MARK: - Properties
     
     var player_id: String!
+    var player_name: String?
     var first_name: String?
     var last_name: String?
     var shirt_number: String?
@@ -34,6 +35,7 @@ struct TasoPlayer: Mappable, Hashable {
     
     mutating func mapping(map: Map) {
         player_id       <- map["player_id"]
+        player_name     <- map["player_name"]
         first_name      <- map["first_name"]
         last_name       <- map["last_name"]
         shirt_number    <- map["shirt_number"]

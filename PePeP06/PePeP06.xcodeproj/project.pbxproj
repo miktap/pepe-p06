@@ -13,6 +13,8 @@
 		C33431971FF568D10050818C /* MockTasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33431961FF568D10050818C /* MockTasoClient.swift */; };
 		C33431991FF6C4C70050818C /* Team.json in Resources */ = {isa = PBXBuildFile; fileRef = C33431981FF6C4C70050818C /* Team.json */; };
 		C334319B1FF8FC490050818C /* CategorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C334319A1FF8FC490050818C /* CategorySelectionViewController.swift */; };
+		C334319D1FFA9BFE0050818C /* TasoGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C334319C1FFA9BFE0050818C /* TasoGroup.swift */; };
+		C334319F1FFA9D020050818C /* TasoGroupListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C334319E1FFA9D020050818C /* TasoGroupListing.swift */; };
 		C3343AD41EABB340009AED76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3343AD31EABB340009AED76 /* AppDelegate.swift */; };
 		C3343ADB1EABB340009AED76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3343AD91EABB340009AED76 /* Main.storyboard */; };
 		C3343ADD1EABB340009AED76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3343ADC1EABB340009AED76 /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 		C33431961FF568D10050818C /* MockTasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTasoClient.swift; sourceTree = "<group>"; };
 		C33431981FF6C4C70050818C /* Team.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Team.json; sourceTree = "<group>"; };
 		C334319A1FF8FC490050818C /* CategorySelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionViewController.swift; sourceTree = "<group>"; };
+		C334319C1FFA9BFE0050818C /* TasoGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoGroup.swift; sourceTree = "<group>"; };
+		C334319E1FFA9D020050818C /* TasoGroupListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoGroupListing.swift; sourceTree = "<group>"; };
 		C3343AD01EABB340009AED76 /* PePeP06.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PePeP06.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3343AD31EABB340009AED76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3343ADA1EABB340009AED76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -235,15 +239,17 @@
 			isa = PBXGroup;
 			children = (
 				C353B5DB1FF2447500526AD3 /* TasoCategory.swift */,
+				C353B5E11FF24AE100526AD3 /* TasoCategoryListing.swift */,
 				C353B5DD1FF2463D00526AD3 /* TasoClub.swift */,
+				C353B5DF1FF2498600526AD3 /* TasoClubListing.swift */,
 				C3BDC4191FF127AB0031512F /* TasoCompetition.swift */,
 				C3BDC41B1FF127CA0031512F /* TasoCompetitionListing.swift */,
+				C334319C1FFA9BFE0050818C /* TasoGroup.swift */,
+				C334319E1FFA9D020050818C /* TasoGroupListing.swift */,
 				C3714E2D1FEFA1D300A913C1 /* TasoPlayer.swift */,
+				C353B5F81FF4160600526AD3 /* TasoPlayerListing.swift */,
 				C3714E2F1FEFA3B200A913C1 /* TasoTeam.swift */,
 				C3714E341FF00DAE00A913C1 /* TasoTeamListing.swift */,
-				C353B5DF1FF2498600526AD3 /* TasoClubListing.swift */,
-				C353B5E11FF24AE100526AD3 /* TasoCategoryListing.swift */,
-				C353B5F81FF4160600526AD3 /* TasoPlayerListing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -500,10 +506,12 @@
 				C3D96BF21FEEB23E009CFBC8 /* WebClient.swift in Sources */,
 				C353B5E01FF2498600526AD3 /* TasoClubListing.swift in Sources */,
 				C353B5F51FF400EF00526AD3 /* PlayerViewController.swift in Sources */,
+				C334319F1FFA9D020050818C /* TasoGroupListing.swift in Sources */,
 				C3BDC41C1FF127CA0031512F /* TasoCompetitionListing.swift in Sources */,
 				C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */,
 				C353B5E21FF24AE100526AD3 /* TasoCategoryListing.swift in Sources */,
 				C353B5F61FF400EF00526AD3 /* StatisticsViewController.swift in Sources */,
+				C334319D1FFA9BFE0050818C /* TasoGroup.swift in Sources */,
 				C3714E301FEFA3B200A913C1 /* TasoTeam.swift in Sources */,
 				C353B5F71FF400EF00526AD3 /* TeamViewController.swift in Sources */,
 				C353B5E61FF293D800526AD3 /* TasoClubFilter.swift in Sources */,

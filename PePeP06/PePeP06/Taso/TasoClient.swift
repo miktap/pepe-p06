@@ -58,6 +58,16 @@ protocol TasoClientProtocol {
      * - Returns: A promise of a `WebResponse`
      */
     func getPlayer(player_id: String) -> Promise<WebResponse>?
+    
+    /**
+     * Get a group.
+     *
+     * - Parameter competition_id: Competition ID
+     * - Parameter category_id: Category ID
+     * - Parameter group_id: Group ID
+     * - Parameter matches (Optional): List matches (1) or not (0), by default 0
+     */
+    func getGroup(competition_id: String, category_id: String, group_id: String, matches: String?) -> Promise<WebResponse>?
 }
 
 /**
@@ -146,6 +156,19 @@ class TasoClient: WebClient, TasoClientProtocol {
     func getPlayer(player_id: String) -> Promise<WebResponse>? {
         let query = TasoQuery(queries: [URLQueryItem(name: "player_id", value: player_id)])
         let request = WebRequest(url: tasoUrl + "getPlayer", method: "GET", queryParams: query.output, headers: nil, body: nil)
+        return invoke(webRequest: request)
+    }
+    
+    func getGroup(competition_id: String, category_id: String, group_id: String, matches: String? = nil) -> Promise<WebResponse>? {
+        var query = TasoQuery()
+        query.queries = [
+            URLQueryItem(name: "competition_id", value: competition_id),
+            URLQueryItem(name: "category_id", value: category_id),
+            URLQueryItem(name: "group_id", value: group_id),
+            URLQueryItem(name: "matches", value: matches)
+        ]
+        
+        let request = WebRequest(url: tasoUrl + "getGroup", method: "GET", queryParams: query.output, headers: nil, body: nil)
         return invoke(webRequest: request)
     }
 }
