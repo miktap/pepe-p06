@@ -159,13 +159,14 @@ class DataService {
     }
     
     /**
-     * Get a team with a specified category.
+     * Get a team with a specified category and competition.
      *
      * - Parameter name team_id: Team ID
+     * - Parameter name competition_id: Competition ID
      * - Parameter name category_id: Category ID
      */
-    func populateTeamWithCategory(team_id: String, category_id: String) {
-        dataClient.getTeam(team_id: team_id, competition_id: nil, category_id: category_id)?
+    func populateTeamWithCategory(team_id: String, competition_id: String, category_id: String) {
+        dataClient.getTeam(team_id: team_id, competition_id: competition_id, category_id: category_id)?
             .then { response -> Void in
                 if let data = response.data, let message = String(data: data, encoding: .utf8) {
                     log.debug("Message: \(message)")

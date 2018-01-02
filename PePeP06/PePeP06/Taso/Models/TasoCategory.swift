@@ -14,19 +14,20 @@ struct TasoCategory: Mappable, Hashable, CustomStringConvertible {
     var category_id: String!
     var category_name: String?
     var category_team_name: String?
-    var competition_id: String?
+    var competition_id: String!
     var competition_name: String?
     var competition_season: String?
     var competition_active: String?
     
     var hashValue: Int {return category_id.hashValue}
-    var description: String {return "\(category_id!)/\(category_name ?? "")"}
+    var description: String {return "\(category_id!)/\(competition_id!)"}
     
     
     // MARK: - Mappable
     
     init?(map: Map) {
-        if map.JSON["category_id"] == nil {
+        if map.JSON["category_id"] == nil ||
+            map.JSON["competition_id"] == nil {
             return nil
         }
     }
@@ -45,6 +46,7 @@ struct TasoCategory: Mappable, Hashable, CustomStringConvertible {
     // MARK: - Equatable
     
     static func ==(lhs: TasoCategory, rhs: TasoCategory) -> Bool {
-        return lhs.category_id == rhs.category_id
+        return lhs.category_id == rhs.category_id &&
+            lhs.competition_id == rhs.competition_id
     }
 }

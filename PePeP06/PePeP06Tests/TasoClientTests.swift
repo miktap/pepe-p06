@@ -23,7 +23,7 @@ class TasoClientTests: QuickSpec {
             describe("getTeam") {
                 it("gets PePe team") {
                     var teamListing: TasoTeamListing?
-                    tasoClient.getTeam(team_id: "141460")!
+                    tasoClient.getTeam(team_id: "141460", competition_id: "lsfs1718", category_id: "FP12")!
                         .then { response -> Void in
                             let message = String(data: response.data!, encoding: .utf8)
                             log.debug(message!)
@@ -91,7 +91,7 @@ class TasoClientTests: QuickSpec {
             }
             
             describe("getGroup") {
-                it("") {
+                it("gets group with player statistics") {
                     var groupListing: TasoGroupListing?
                     tasoClient.getGroup(competition_id: "lsfs1718", category_id: "FP12", group_id: "1")!
                         .then { response -> Void in

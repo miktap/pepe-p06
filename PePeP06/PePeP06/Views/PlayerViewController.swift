@@ -12,13 +12,16 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     var id = "PlayerViewController"
     var dataService: DataService!
-    var player: TasoPlayer?
+    /// Player whose stats are shown
+    var currentPlayer: TasoPlayer?
+    /// Teams and categories tied up, used when the final team data (which contains player stats) is fetched
     var teamCategories = [TasoTeam: [TasoCategory]]() {
         didSet {
             log.debug("Teams and categories defined")
             categoryList = teamCategories.values.flatMap {$0}
         }
     }
+    /// Used to populate the categories in the CategorySelection view
     var categoryList = [TasoCategory]() {
         didSet {
             if currentCategory == nil {
@@ -27,10 +30,21 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     }
+    /// Currently selected category, used when the final team data (which contains player stats) is fetched
     var currentCategory: TasoCategory? {
         didSet {
             tableView.reloadData()
             getPlayerStats()
+        }
+    }
+    /// This is the final team data containing player stats
+    var currentTeam: TasoTeam? {
+        didSet {
+            if let player = currentTeam?.players?.first(where: {$0.player_id == currentPlayer?.player_id}) {
+                currentPlayer = player
+                log.debug("Player set to: \(currentPlayer!), update UI")
+                tableView.reloadData()
+            }
         }
     }
     @IBOutlet weak var tableView: UITableView!
@@ -41,7 +55,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = player?.first_name
+        navigationItem.title = currentPlayer?.first_name
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -102,7 +116,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - Methods
     
     func updateStats() {
-        guard let player = player else {
+        guard let player = currentPlayer else {
             log.warning("No player data to update")
             return
         }
@@ -135,9 +149,14 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     func teamWithCategoryPopulated(team: TasoTeam?, error: Error?) {
         log.debug("Team with category populated")
-        tableView.reloadData()
+        
+        if let error = error {
+            log.error(error)
+            // TODO: error dialog
+        } else {
+            currentTeam = team
+        }
     }
-    
     
     
     // MARK: - Navigation
@@ -173,7 +192,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         log.debug("Category changed to \(currentCategory), find out into which team this category belongs")
         if let team = teamCategories.first(where: {$0.value.contains(currentCategory)}) {
             log.debug("Category is included to team: \(team.key), get team")
-            dataService.populateTeamWithCategory(team_id: team.key.team_id, category_id: currentCategory.category_id)
+            dataService.populateTeamWithCategory(team_id: team.key.team_id, competition_id: currentCategory.competition_id, category_id: currentCategory.category_id)
         }
     }
 }

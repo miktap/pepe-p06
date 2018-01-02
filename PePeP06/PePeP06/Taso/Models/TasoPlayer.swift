@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-struct TasoPlayer: Mappable, Hashable {
+struct TasoPlayer: Mappable, Hashable, CustomStringConvertible {
     // MARK: - Properties
     
     var player_id: String!
@@ -23,6 +23,7 @@ struct TasoPlayer: Mappable, Hashable {
     var suspensions: String?
 
     var hashValue: Int {return player_id.hashValue}
+    var description: String {return "\(player_id!)/\(first_name ?? "")"}
 
     
     // MARK: - Mappable

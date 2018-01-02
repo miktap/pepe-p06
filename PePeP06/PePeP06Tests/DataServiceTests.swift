@@ -155,7 +155,7 @@ class DataServiceTests: QuickSpec {
                     it("notifies delegates with an error") {
                         mockTasoClient.rejectPromise = true
                         
-                        dataService.populateTeamWithCategory(team_id: "1", category_id: "2")
+                        dataService.populateTeamWithCategory(team_id: "1", competition_id: "3", category_id: "2")
                         
                         expect(mockDelegate.teamWithCategoryPopulatedCalled).toEventually(beTrue())
                         expect(mockDelegate.teamWithCategoryPopulatedTeam).toEventually(beNil())
@@ -167,7 +167,7 @@ class DataServiceTests: QuickSpec {
                     it("notifies delegates with an error") {
                         mockTasoClient.webResponse = WebResponse(data: nil, statusCode: 200)
                         
-                        dataService.populateTeamWithCategory(team_id: "1", category_id: "2")
+                        dataService.populateTeamWithCategory(team_id: "1", competition_id: "3", category_id: "2")
                         
                         expect(mockDelegate.teamWithCategoryPopulatedCalled).toEventually(beTrue())
                         expect(mockDelegate.teamWithCategoryPopulatedTeam).toEventually(beNil())
@@ -187,7 +187,7 @@ class DataServiceTests: QuickSpec {
 """
                         mockTasoClient.webResponse = WebResponse(data: json.data(using: .utf8)!, statusCode: 200)
                         
-                        dataService.populateTeamWithCategory(team_id: "1", category_id: "2")
+                        dataService.populateTeamWithCategory(team_id: "1", competition_id: "3", category_id: "2")
                         
                         expect(mockDelegate.teamWithCategoryPopulatedCalled).toEventually(beTrue())
                         expect(mockDelegate.teamWithCategoryPopulatedTeam).toEventually(beNil())
@@ -203,7 +203,7 @@ class DataServiceTests: QuickSpec {
                         let teamJSON = try! String(contentsOf: url, encoding: .utf8)
                         mockTasoClient.webResponse = WebResponse(data: teamJSON.data(using: .utf8)!, statusCode: 200)
                         
-                        dataService.populateTeamWithCategory(team_id: "1", category_id: "2")
+                        dataService.populateTeamWithCategory(team_id: "1", competition_id: "3", category_id: "2")
                         
                         expect(mockDelegate.teamWithCategoryPopulatedCalled).toEventually(beTrue())
                         expect(mockDelegate.teamWithCategoryPopulatedTeam?.team_id).toEventually(equal("141460"))

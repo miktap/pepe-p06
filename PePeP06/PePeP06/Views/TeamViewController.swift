@@ -122,7 +122,7 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Pass the selected object to the new view controller.
         if let vc = segue.destination as? PlayerViewController,
             let cellIndex = tableView.indexPathForSelectedRow {
-            vc.player = players[cellIndex.row]
+            vc.currentPlayer = players[cellIndex.row]
         }
     }
     
