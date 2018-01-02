@@ -96,10 +96,17 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
+        
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
             cell.textLabel?.text = currentCategory?.category_name
             cell.detailTextLabel?.text = currentCategory?.competition_season
+        }
+        
+        if indexPath.section == 1 {
+            let playerCell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath) as! PlayerInfoCell
+            playerCell.buildFrom(player: currentPlayer)
+            cell = playerCell
         }
         
         return cell
@@ -113,27 +120,11 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-    // MARK: - Methods
-    
-    func updateStats() {
-        guard let player = currentPlayer else {
-            log.warning("No player data to update")
-            return
-        }
-        
-        //        nameLabel.text      = playerFullName(player: player)
-        //        gamesLabel.text     = player.matches
-        //        goalsLabel.text     = player.goals
-        //        passesLabel.text    = player.assists
-        //        yellowsLabel.text   = player.warnings
-        //        redsLabel.text      = player.suspensions
-    }
-    
-    
     // MARK: - DataServiceDelegate
     
     func clubPopulated(club: TasoClub?, error: Error?) {
         log.debug("Club populated")
+        tableView.refreshControl?.endRefreshing()
         
         if let error = error {
             log.error(error)
@@ -149,6 +140,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     func teamWithCategoryPopulated(team: TasoTeam?, error: Error?) {
         log.debug("Team with category populated")
+        tableView.refreshControl?.endRefreshing()
         
         if let error = error {
             log.error(error)
@@ -181,6 +173,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     @objc private func update() {
         dataService.populateClub()
+        getPlayerStats()
     }
     
     private func getPlayerStats() {
@@ -189,7 +182,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
         
-        log.debug("Category changed to \(currentCategory), find out into which team this category belongs")
+        log.debug("Current category \(currentCategory), find out into which team this category belongs")
         if let team = teamCategories.first(where: {$0.value.contains(currentCategory)}) {
             log.debug("Category is included to team: \(team.key), get team")
             dataService.populateTeamWithCategory(team_id: team.key.team_id, competition_id: currentCategory.competition_id, category_id: currentCategory.category_id)
@@ -198,5 +191,26 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 }
 
 class PlayerInfoCell: UITableViewCell {
+    // MARK: - Properties
     
+    @IBOutlet weak var gamesLabel: UILabel!
+    @IBOutlet weak var goalsLabel: UILabel!
+    @IBOutlet weak var passesLabel: UILabel!
+    @IBOutlet weak var yellowsLabel: UILabel!
+    @IBOutlet weak var redsLabel: UILabel!
+    
+    
+    // MARK: - Methods
+    
+    func buildFrom(player: TasoPlayer?) {
+        guard let player = player else {
+            return
+        }
+        
+        gamesLabel.text = player.matches
+        goalsLabel.text = player.goals
+        passesLabel.text = player.assists
+        yellowsLabel.text = player.warnings
+        redsLabel.text = player.suspensions
+    }
 }
