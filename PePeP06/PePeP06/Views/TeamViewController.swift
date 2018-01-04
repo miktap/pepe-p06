@@ -108,6 +108,7 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                 }
                 players = Array(newPlayers)
+                navigationItem.title = teams.first?.team_name
             }
         }
     }

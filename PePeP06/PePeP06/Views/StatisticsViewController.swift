@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatisticsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataServiceDelegate {
+class StatisticsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataServiceDelegate, CategorySelectionProtocol {
     // MARK: - Properties
     
     var id = "StatisticsViewController"
@@ -115,6 +115,24 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     func teamsPopulated(teams: [TasoTeam]?, error: Error?) {}
     func teamWithCategoryPopulated(team: TasoTeam?, error: Error?) {}
     
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? CategorySelectionViewController {
+            vc.delegate = self
+            vc.categories = categoryList
+            vc.currentCategory = currentCategory
+        }
+    }
+
+    
+    // MARK: - CategorySelectionProtocol
+    
+    func categorySelected(category: TasoCategory) {
+        currentCategory = category
+    }
+
     
     // MARK: - Private methods
     

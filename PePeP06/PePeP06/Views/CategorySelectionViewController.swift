@@ -30,6 +30,7 @@ class CategorySelectionViewController: UIViewController, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Valitse sarja"
         tableView.delegate = self
         tableView.dataSource = self
     }
