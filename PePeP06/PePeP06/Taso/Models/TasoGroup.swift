@@ -19,6 +19,7 @@ struct TasoGroup: Mappable, CustomStringConvertible {
     var group_id: String!
     var group_name: String?
     var player_statistics: [TasoPlayer]?
+    var teams: [TasoTeam]?
     
     var description: String {return "\(competition_id)/\(category_id)/\(group_id)"}
     
@@ -41,5 +42,6 @@ struct TasoGroup: Mappable, CustomStringConvertible {
         group_id            <- map["group_id"]
         group_name          <- map["group_name"]
         player_statistics   <- map["player_statistics"]
+        teams               <- map["teams"]
     }
 }

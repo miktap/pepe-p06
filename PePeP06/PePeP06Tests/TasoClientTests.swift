@@ -91,7 +91,7 @@ class TasoClientTests: QuickSpec {
             }
             
             describe("getGroup") {
-                it("gets group with player statistics") {
+                fit("gets group with team standings") {
                     var groupListing: TasoGroupListing?
                     tasoClient.getGroup(competition_id: "lsfs1718", category_id: "FP12", group_id: "1")!
                         .then { response -> Void in
@@ -100,7 +100,7 @@ class TasoClientTests: QuickSpec {
                             groupListing = TasoGroupListing(JSONString: message!)
                     }
                     
-                    expect(groupListing?.group?.player_statistics).toNotEventually(beNil(), timeout: 3)
+                    expect(groupListing?.group?.teams).toNotEventually(beNil(), timeout: 3)
                 }
             }
         }
