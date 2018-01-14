@@ -32,6 +32,7 @@
 		C353B5F71FF400EF00526AD3 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F41FF400EF00526AD3 /* TeamViewController.swift */; };
 		C353B5F91FF4160600526AD3 /* TasoPlayerListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F81FF4160600526AD3 /* TasoPlayerListing.swift */; };
 		C353B5FC1FF41AE700526AD3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5FB1FF41AE700526AD3 /* DataService.swift */; };
+		C36BFF6D200B700100D6F420 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C36BFF6C200B700100D6F420 /* awsconfiguration.json */; };
 		C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */; };
 		C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */; };
 		C3714E2E1FEFA1D300A913C1 /* TasoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2D1FEFA1D300A913C1 /* TasoPlayer.swift */; };
@@ -89,6 +90,7 @@
 		C353B5F41FF400EF00526AD3 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		C353B5F81FF4160600526AD3 /* TasoPlayerListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoPlayerListing.swift; sourceTree = "<group>"; };
 		C353B5FB1FF41AE700526AD3 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		C36BFF6C200B700100D6F420 /* awsconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClient.swift; sourceTree = "<group>"; };
 		C3714E2D1FEFA1D300A913C1 /* TasoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoPlayer.swift; sourceTree = "<group>"; };
@@ -163,8 +165,9 @@
 				C353B5F11FF400E200526AD3 /* Views */,
 				C3343AD31EABB340009AED76 /* AppDelegate.swift */,
 				C3343AD91EABB340009AED76 /* Main.storyboard */,
-				C3343ADC1EABB340009AED76 /* Assets.xcassets */,
 				C3343ADE1EABB340009AED76 /* LaunchScreen.storyboard */,
+				C3343ADC1EABB340009AED76 /* Assets.xcassets */,
+				C36BFF6C200B700100D6F420 /* awsconfiguration.json */,
 				C3343AE11EABB340009AED76 /* Info.plist */,
 			);
 			path = PePeP06;
@@ -368,6 +371,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C36BFF6D200B700100D6F420 /* awsconfiguration.json in Resources */,
 				C3343AE01EABB340009AED76 /* LaunchScreen.storyboard in Resources */,
 				C3343ADD1EABB340009AED76 /* Assets.xcassets in Resources */,
 				C3343ADB1EABB340009AED76 /* Main.storyboard in Resources */,
@@ -461,7 +465,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PePeP06/Pods-PePeP06-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -469,7 +476,10 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAuthCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
