@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import SwiftyBeaver
+
+let log = SwiftyBeaver.self
+let logFormat = "$Dyyyy-MM-dd HH:mm:ss.SSS$d $L $N.$F:$l - $M"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var dataService: DataService!
+    
+    // MARK: - Static variables
+    
+    static var dataService: DataService {return (UIApplication.shared.delegate as! AppDelegate).dataService}
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // SwiftyBeaver logging configuration
+        let console = ConsoleDestination()
+        console.format = logFormat
+        log.addDestination(console)
+
+        dataService = DataService(client: TasoClient())
+        
         return true
     }
 
