@@ -91,7 +91,7 @@ class TasoClientTests: QuickSpec {
             }
             
             describe("getGroup") {
-                fit("gets group with team standings") {
+                it("gets group with team standings") {
                     var groupListing: TasoGroupListing?
                     tasoClient.getGroup(competition_id: "lsfs1718", category_id: "FP12", group_id: "1")!
                         .then { response -> Void in
