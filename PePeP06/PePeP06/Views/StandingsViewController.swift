@@ -8,10 +8,10 @@
 
 import UIKit
 
-class StatisticsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataServiceDelegate, CategorySelectionProtocol {
+class StandingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DataServiceDelegate, CategorySelectionProtocol {
     // MARK: - Properties
     
-    var id = "StatisticsViewController"
+    var id = "StandingsViewController"
     var dataService: DataService!
     var categoryList = [TasoCategory]() {
         didSet {
