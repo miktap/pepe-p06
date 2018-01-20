@@ -57,7 +57,6 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
-        dataService.populateTeams()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -89,6 +88,10 @@ class TeamViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     // MARK: - DataServiceDelegate
+    
+    func dataServiceReady() {
+        dataService.populateTeams()
+    }
     
     func clubPopulated(club: TasoClub?, error: Error?) {}
     

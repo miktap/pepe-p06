@@ -18,6 +18,8 @@ class TasoClientTests: QuickSpec {
             
             beforeEach {
                 tasoClient = TasoClient()
+                tasoClient.initialize()
+                sleep(1)
             }
             
             describe("getTeam") {

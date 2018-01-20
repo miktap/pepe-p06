@@ -12,6 +12,11 @@ protocol DataServiceDelegate {
     var id: String {get}
     
     /**
+     * DataService is ready.
+     */
+    func dataServiceReady()
+    
+    /**
      * Club has been populated.
      *
      * - Parameter club: Populated club or nil in case of an error
@@ -47,17 +52,20 @@ enum DataServiceError: Error {
  * `DataService` class provides methods to populate data models used by various views.
  *
  */
-class DataService {
+class DataService: TasoClientDelegate {
     // MARK: - Properties
     
     var dataClient: TasoClientProtocol
     var delegates = [DataServiceDelegate]()
+    var isReady = false
     
     
     // MARK: - Initialization
     
     init(client: TasoClientProtocol) {
         dataClient = client
+        dataClient.initialize()
+        dataClient.delegate = self
     }
     
     
@@ -67,6 +75,9 @@ class DataService {
         if !delegates.contains(where: { $0.id == delegate.id } ) {
             log.debug("Add new DataServiceDelegate with id: '\(delegate.id)'")
             delegates.append(delegate)
+            if isReady {
+                delegate.dataServiceReady()
+            }
         }
     }
     
@@ -191,5 +202,13 @@ class DataService {
                                                  error: DataServiceError.unknownError(error.localizedDescription))
                 }
         }
+    }
+    
+    
+    // MARK: - TasoClientDelegate
+    
+    func tasoClientReady() {
+        isReady = true
+        delegates.forEach {$0.dataServiceReady()}
     }
 }

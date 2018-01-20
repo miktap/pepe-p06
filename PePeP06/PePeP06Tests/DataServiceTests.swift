@@ -211,12 +211,22 @@ class DataServiceTests: QuickSpec {
                     }
                 }
             }
+            
+            describe("tasoClientReady") {
+                it("notifies delegates that service is ready") {
+                    dataService.tasoClientReady()
+                    expect(dataService.isReady).to(beTrue())
+                    expect(mockDelegate.dataServiceReadyCalled).to(beTrue())
+                }
+            }
         }
     }
 }
 
 class MockDataServiceDelegate: DataServiceDelegate {
     var id: String = "MockDataServiceDelegate"
+    
+    var dataServiceReadyCalled = false
     
     var clubPopulatedCalled = false
     var clubPopulatedClub: TasoClub?
@@ -230,6 +240,10 @@ class MockDataServiceDelegate: DataServiceDelegate {
     var teamWithCategoryPopulatedTeam: TasoTeam?
     var teamWithCategoryPopulatedError: Error?
     
+    func dataServiceReady() {
+        dataServiceReadyCalled = true
+    }
+
     func clubPopulated(club: TasoClub?, error: Error?) {
         clubPopulatedCalled = true
         clubPopulatedClub = club

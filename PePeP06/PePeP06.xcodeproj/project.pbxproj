@@ -33,6 +33,7 @@
 		C353B5F91FF4160600526AD3 /* TasoPlayerListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5F81FF4160600526AD3 /* TasoPlayerListing.swift */; };
 		C353B5FC1FF41AE700526AD3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353B5FB1FF41AE700526AD3 /* DataService.swift */; };
 		C36BFF6D200B700100D6F420 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C36BFF6C200B700100D6F420 /* awsconfiguration.json */; };
+		C36BFF70200B73A600D6F420 /* S3Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BFF6F200B73A600D6F420 /* S3Client.swift */; };
 		C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */; };
 		C3714E2B1FEEE93D00A913C1 /* TasoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */; };
 		C3714E2E1FEFA1D300A913C1 /* TasoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3714E2D1FEFA1D300A913C1 /* TasoPlayer.swift */; };
@@ -91,6 +92,7 @@
 		C353B5F81FF4160600526AD3 /* TasoPlayerListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoPlayerListing.swift; sourceTree = "<group>"; };
 		C353B5FB1FF41AE700526AD3 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C36BFF6C200B700100D6F420 /* awsconfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		C36BFF6F200B73A600D6F420 /* S3Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Client.swift; sourceTree = "<group>"; };
 		C3714E231FEECD8400A913C1 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		C3714E2A1FEEE93D00A913C1 /* TasoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoClient.swift; sourceTree = "<group>"; };
 		C3714E2D1FEFA1D300A913C1 /* TasoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasoPlayer.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		C3343AD21EABB340009AED76 /* PePeP06 */ = {
 			isa = PBXGroup;
 			children = (
+				C36BFF6E200B738A00D6F420 /* AWS */,
 				C353B5FA1FF41AC500526AD3 /* DataSource */,
 				C353B5E71FF294F300526AD3 /* Filters */,
 				C3D96BF01FEEB228009CFBC8 /* Taso */,
@@ -221,6 +224,14 @@
 				C353B5FB1FF41AE700526AD3 /* DataService.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		C36BFF6E200B738A00D6F420 /* AWS */ = {
+			isa = PBXGroup;
+			children = (
+				C36BFF6F200B73A600D6F420 /* S3Client.swift */,
+			);
+			path = AWS;
 			sourceTree = "<group>";
 		};
 		C3714E221FEECD6900A913C1 /* Utilities */ = {
@@ -538,6 +549,7 @@
 				C353B5DC1FF2447500526AD3 /* TasoCategory.swift in Sources */,
 				C3714E241FEECD8400A913C1 /* UtilityFunctions.swift in Sources */,
 				C334319B1FF8FC490050818C /* CategorySelectionViewController.swift in Sources */,
+				C36BFF70200B73A600D6F420 /* S3Client.swift in Sources */,
 				C353B5FC1FF41AE700526AD3 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
