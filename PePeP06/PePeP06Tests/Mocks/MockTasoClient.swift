@@ -10,6 +10,8 @@ import PromiseKit
 @testable import PePeP06
 
 class MockTasoClient: TasoClientProtocol {
+    var delegate: TasoClientDelegate?
+    
     var team_id: String?
     var competition_id: String?
     var category_id: String?
@@ -26,7 +28,8 @@ class MockTasoClient: TasoClientProtocol {
     var rejectPromise = false
     var webResponse: WebResponse?
     
-    
+    func initialize() {}
+
     func getTeam(team_id: String, competition_id: String?, category_id: String?) -> Promise<WebResponse>? {
         self.team_id = team_id
         self.competition_id = competition_id

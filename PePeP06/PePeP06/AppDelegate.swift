@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyBeaver
+import AWSMobileClient
 
 let log = SwiftyBeaver.self
 let logFormat = "$Dyyyy-MM-dd HH:mm:ss.SSS$d $L $N.$F:$l - $M"
@@ -31,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         dataService = DataService(client: TasoClient())
         
-        return true
+        return AWSMobileClient.sharedInstance().interceptApplication(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

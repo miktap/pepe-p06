@@ -70,8 +70,6 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
-        dataService.populateClub()
-        getPlayerStats()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -121,6 +119,10 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     // MARK: - DataServiceDelegate
+    
+    func dataServiceReady() {
+        update()
+    }
     
     func clubPopulated(club: TasoClub?, error: Error?) {
         log.debug("Club populated")

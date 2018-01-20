@@ -50,7 +50,6 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dataService.addDelegate(delegate: self)
-        dataService.populateClub()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -93,6 +92,10 @@ class StatisticsViewController: UIViewController, UITableViewDataSource, UITable
     
     
     // MARK: - DataServiceDelegate
+    
+    func dataServiceReady() {
+        dataService.populateClub()
+    }
     
     func clubPopulated(club: TasoClub?, error: Error?) {
         log.debug("Club populated")
